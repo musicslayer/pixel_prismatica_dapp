@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+
+<h1 id="ID_HeaderText"></h1>
+
+<img src="favicon.png" alt="Musicslayer Logo" style="width:32px;height:32px;"><br/><br/>
+		
+<a href="https://musicslayer.github.io/lottery_dapp/" target="_parent">Select a different network.</a>
+
+<h2><u>Info</u></h2>
+<h3>Contract</h3>
+<text id="ID_ContractAddressText"></text>
+<a id="ID_ContractAddressLink" target="_blank"></a>
+
+<p id="ID_ContractResultText" style='white-space: pre;'></p>
+
+<text id="ID_OwnerAddressText"></text>
+<a id="ID_OwnerAddressLink" target="_blank"></a><br/>
+
+<text id="ID_OperatorAddressText"></text>
+<a id="ID_OperatorAddressLink" target="_blank"></a>
+
+<h3>Winners</h3>
+
+<button id="ID_UpdateWinnersButton">Update Winners</button>
+
+<p id="ID_WinnersResultText" style='white-space: pre;'></p>
+<table id="ID_WinnersResultTable"></table>
+
+<br/><br/><br/>
+
+<h2><u>Connection</u></h2>
+
+<text>Connect your wallet to this dapp to interact with the lottery. MetaMask and Trust Wallet DApp Browser are supported.</text><br/><br/>
+<img src="metamask.png" alt="MetaMask Logo" style="width:32px;height:32px;">
+<img src="trust_wallet.png" alt="Trust Wallet Logo" style="width:32px;height:32px;"><br/><br/>
+<button id="ID_ConnectButton">Connect</button>
+<p id="ID_ConnectAddressResultText" style='white-space: pre;'>Address Connected: ?</p>
+<table id="ID_ConnectAddressResultTable"></table>
+
+<br/><br/><br/>
+
+<h2><u>Status</u></h2>
+
+<button id="ID_UpdateStatusButton">Update Status</button>
+<p id="ID_UpdateStatusResultText" style='white-space: pre;'></p>
+
+<h3>Lottery</h3>
+
+<text>Lottery Number: </text>
+<text id="ID_LotteryNumberText">?</text><br/><br/>
+
+<text>Total Active Blocks: </text>
+<text id="ID_TotalActiveBlocksText">?</text><br/>
+
+<text>Remaining Active Blocks: </text>
+<text id="ID_RemainingActiveBlocksText">?</text><br/><br/>
+
+<text>Ticket Price: </text>
+<text id="ID_TicketPriceText">?</text><br/>
+
+<text>Total Tickets: </text>
+<text id="ID_TotalTicketsText">?</text><br/><br/>
+
+<text>Is Lottery Active: </text>
+<text id="ID_LotteryActiveText">?</text><br/>
+
+<text>Is Winning Ticket Drawn: </text>
+<text id="ID_WinningTicketDrawnText">?</text><br/>
+
+<h3>Prize</h3>
+
+<h4>Prize Pools</h4>
+
+<text>Player Prize Pool: </text>
+<text id="ID_PlayerPrizePoolText">?</text><br/>
+
+<text>Bonus Prize Pool: </text>
+<text id="ID_BonusPrizePoolText">?</text><br/>
+
+<h4>Total Prize</h4>
+
+<text>The winner will receive 90% of the player prize pool and 100% of the bonus prize pool.</text><br/><br/>
+
+<text>Total Prize: </text>
+<text id="ID_TotalPrizeText">?</text>
+<p style='white-space: pre;'></p> <!-- Use this to maintain consistent spacing. -->
+
+<br/><br/><br/>
+
+<h2><u>Play</u></h2>
+
+<h3>Purchase Tickets</h3>
+<text>A max of 10000 tickets can be purchased per transaction.</text><br/><br/>
+<text>Number of tickets:</text>
+<input id="ID_TicketsNumberInput" type="text" maxlength="9"></input>
+<button id="ID_PurchaseTicketsButton">Purchase Tickets</button><br/>
+<p id="ID_PurchaseTicketsResultText" style='white-space: pre;'></p>
+
+<h3>Draw Winning Ticket</h3>
+<text>This will randomly determine a winner. For security reasons, any lottery with 2 or more players will require a ten minute wait after the transaction before the ticket is drawn and the lottery can be ended.</text><br/><br/>
+<button id="ID_DrawWinningTicketButton">Draw Winning Ticket</button><br/>
+<p id="ID_DrawWinningTicketResultText" style='white-space: pre;'></p>
+
+<h3>End Lottery</h3>
+<text>After a winning ticket has been drawn, this will add the prize to the winner's claimable balance and start a new lottery.</text><br/><br/>
+<button id="ID_EndLotteryButton">End Lottery</button><br/>
+<p id="ID_EndLotteryResultText" style='white-space: pre;'></p>
+
+<br/><br/><br/>
+
+<h2><u>Balances</u></h2>
+
+<h3>Address Tickets</h3>
+
+<text>Check how many tickets the address has in the current lottery.</text><br/><br/>
+<button id="ID_LookupAddressTicketsButton">Lookup Tickets</button><br/>
+<p id="ID_LookupAddressTicketsResultText" style='white-space: pre;'>Tickets: ?</p>
+
+<h3>Address Claimable Balance</h3>
+
+<text>This balance includes your prize winnings.</text><br/><br/>
+<button id="ID_LookupAddressClaimableBalanceButton">Lookup Balance</button>
+<button id="ID_WithdrawAddressClaimableBalanceButton">Withdraw Balance</button><br/>
+<p id="ID_LookupAddressClaimableBalanceResultText" style='white-space: pre;'>Balance: ?</p>
+<p id="ID_WithdrawAddressClaimableBalanceResultText" style='white-space: pre;'></p>
+
+<h3>Address Refund</h3>
+
+<text>If a lottery has been canceled, you can withdraw a refund for your purchased tickets.</text><br/><br/>
+<text>Lottery Number:</text>
+<input id="ID_RefundLotteryInput" type="text" maxlength="9"></input>
+<button id="ID_LookupAddressRefundButton">Lookup Refund</button>
+<button id="ID_WithdrawAddressRefundButton">Withdraw Refund</button><br/>
+<p id="ID_LookupAddressRefundResultText" style='white-space: pre;'>Refund Amount: ?</p>
+<p id="ID_WithdrawAddressRefundResultText" style='white-space: pre;'></p>
+
+<br/><br/><br/>
+
+<h2><u>Donations</u></h2>
+
+<text>Any donations are appreciated!</text><br/>
+
+<h3>Bonus Prize Pool</h3>
+<text>Donate directly to the bonus prize pool.</text><br/><br/>
+<text>Amount (BNB):</text>
+<input id="ID_DonateBonusPrizePoolInput" type="text" maxlength="9"></input>
+<button id="ID_DonateBonusPrizePoolButton">Donate</button><br/>
+<p id="ID_DonateBonusPrizePoolResultText" style='white-space: pre;'></p>
+
+<h3>Operator</h3>
+<text>Donate directly to the operator who runs the lottery.</text><br/><br/>
+<text>Amount (BNB):</text>
+<input id="ID_DonateOperatorInput" type="text" maxlength="9"></input>
+<button id="ID_DonateOperatorButton">Donate</button><br/>
+<p id="ID_DonateOperatorResultText" style='white-space: pre;'></p>
+
+<script type="module">
+	import { ethers } from "./ethers-5.7.esm.min.js";
+	
+	let contractInterface;
+	
+	const HeaderText = document.querySelector('#ID_HeaderText');
+	
+	const ContractAddressText = document.querySelector('#ID_ContractAddressText');
+	const ContractAddressLink = document.querySelector('#ID_ContractAddressLink');
+	const ContractResultText = document.querySelector('#ID_ContractResultText');
+	const OwnerAddressText = document.querySelector('#ID_OwnerAddressText');
+	const OwnerAddressLink = document.querySelector('#ID_OwnerAddressLink');
+	const OperatorAddressText = document.querySelector('#ID_OperatorAddressText');
+	const OperatorAddressLink = document.querySelector('#ID_OperatorAddressLink');
+	
+	const UpdateWinnersButton = document.querySelector('#ID_UpdateWinnersButton');
+	const WinnersResultText = document.querySelector('#ID_WinnersResultText');
+	const WinnersResultTable = document.querySelector('#ID_WinnersResultTable');
+	
+	const ConnectButton = document.querySelector('#ID_ConnectButton');
+	const ConnectAddressResultText = document.querySelector('#ID_ConnectAddressResultText');
+	const ConnectAddressResultTable = document.querySelector('#ID_ConnectAddressResultTable');
+	
+	const UpdateStatusButton = document.querySelector('#ID_UpdateStatusButton');
+	const UpdateStatusResultText = document.querySelector('#ID_UpdateStatusResultText');
+	
+	const LotteryNumberText = document.querySelector('#ID_LotteryNumberText');
+	const TotalActiveBlocksText = document.querySelector('#ID_TotalActiveBlocksText');
+	const RemainingActiveBlocksText = document.querySelector('#ID_RemainingActiveBlocksText');
+	const TicketPriceText = document.querySelector('#ID_TicketPriceText');
+	const TotalTicketsText = document.querySelector('#ID_TotalTicketsText');
+	const LotteryActiveText = document.querySelector('#ID_LotteryActiveText');
+	const WinningTicketDrawnText = document.querySelector('#ID_WinningTicketDrawnText');
+	
+	const PlayerPrizePoolText = document.querySelector('#ID_PlayerPrizePoolText');
+	const BonusPrizePoolText = document.querySelector('#ID_BonusPrizePoolText');
+	const TotalPrizeText = document.querySelector('#ID_TotalPrizeText');
+	
+	const TicketsNumberInput = document.querySelector('#ID_TicketsNumberInput');
+	const PurchaseTicketsButton = document.querySelector('#ID_PurchaseTicketsButton');
+	const PurchaseTicketsResultText = document.querySelector('#ID_PurchaseTicketsResultText');
+	
+	const DrawWinningTicketButton = document.querySelector('#ID_DrawWinningTicketButton');
+	const DrawWinningTicketResultText = document.querySelector('#ID_DrawWinningTicketResultText');
+	
+	const EndLotteryButton = document.querySelector('#ID_EndLotteryButton');
+	const EndLotteryResultText = document.querySelector('#ID_EndLotteryResultText');
+	
+	const LookupAddressTicketsButton = document.querySelector('#ID_LookupAddressTicketsButton');
+	const LookupAddressTicketsResultText = document.querySelector('#ID_LookupAddressTicketsResultText');
+	
+	const LookupAddressClaimableBalanceButton = document.querySelector('#ID_LookupAddressClaimableBalanceButton');
+	const LookupAddressClaimableBalanceResultText = document.querySelector('#ID_LookupAddressClaimableBalanceResultText');
+	const WithdrawAddressClaimableBalanceButton = document.querySelector('#ID_WithdrawAddressClaimableBalanceButton');
+	const WithdrawAddressClaimableBalanceResultText = document.querySelector('#ID_WithdrawAddressClaimableBalanceResultText');
+	
+	const RefundLotteryInput = document.querySelector('#ID_RefundLotteryInput');
+	const LookupAddressRefundButton = document.querySelector('#ID_LookupAddressRefundButton');
+	const LookupAddressRefundResultText = document.querySelector('#ID_LookupAddressRefundResultText');
+	const WithdrawAddressRefundButton = document.querySelector('#ID_WithdrawAddressRefundButton');
+	const WithdrawAddressRefundResultText = document.querySelector('#ID_WithdrawAddressRefundResultText');
+	
+	const DonateBonusPrizePoolInput = document.querySelector('#ID_DonateBonusPrizePoolInput');
+	const DonateBonusPrizePoolButton = document.querySelector('#ID_DonateBonusPrizePoolButton');
+	const DonateBonusPrizePoolResultText = document.querySelector('#ID_DonateBonusPrizePoolResultText');
+	
+	const DonateOperatorInput = document.querySelector('#ID_DonateOperatorInput');
+	const DonateOperatorButton = document.querySelector('#ID_DonateOperatorButton');
+	const DonateOperatorResultText = document.querySelector('#ID_DonateOperatorResultText');
+	
+	window.addEventListener('load', () => {
+		async_onLoad();
+	});
+	
+	async function async_onLoad() {
+		HeaderText.innerHTML = "Welcome to the Musicslayer Lottery on " + parent.getChainDisplayName() + "!";
+		
+		// Do this to work around weird iframe behavior.
+		let computedStyle = HeaderText.currentStyle || window.getComputedStyle(HeaderText);
+		HeaderText.style.margin = computedStyle.margin;
+		
+		contractInterface = new ethers.utils.Interface(await parent.getContractJSON());
+		
+		async_updateContract();
+		async_updateWinners();
+		async_updateWallet();
+		async_updateStatus();
+		
+		let arr = getInjectedProvider();
+		
+		if(arr[1]) {
+			arr[1].on('chainChanged', () => {
+				window.location.reload();
+			})
+			arr[1].on('accountsChanged', () => {
+				async_updateWallet();
+			})
+		}
+	}
+	
+	async function async_updateContract() {
+		try {
+			ContractAddressText.style.color = "#000000";
+			ContractAddressText.innerHTML = "Contract Address: ";
+			ContractAddressLink.innerHTML = parent.getContractAddress();
+			ContractAddressLink.href = parent.getExplorerBaseUrl() + "address/" + parent.getContractAddress();
+			
+			OwnerAddressLink.innerHTML = "";
+			OwnerAddressLink.href = "";
+			OperatorAddressLink.innerHTML = "";
+			OperatorAddressLink.href = "";
+			
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				ContractResultText.style.color = "#FF0000";
+				ContractResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			
+			ContractResultText.style.color = "#000000";
+			ContractResultText.innerHTML = "Query in progress...";
+		
+			let ownerAddress = await contractReadCall(injectedProvider, "get_ownerAddress", []);
+			
+			OwnerAddressText.style.color = "#000000";
+			OwnerAddressText.innerHTML = "Owner Address: ";
+			OwnerAddressLink.innerHTML = ownerAddress;
+			OwnerAddressLink.href = parent.getExplorerBaseUrl() + "address/" + ownerAddress;
+			
+			let operatorAddress = await contractReadCall(injectedProvider, "get_operatorAddress", []);
+			
+			OperatorAddressText.style.color = "#000000";
+			OperatorAddressText.innerHTML = "Operator Address: ";
+			OperatorAddressLink.innerHTML = operatorAddress;
+			OperatorAddressLink.href = parent.getExplorerBaseUrl() + "address/" + operatorAddress;
+			
+			ContractResultText.style.color = "#000000";
+			ContractResultText.innerHTML = "";
+		}
+		catch(error) {
+			OwnerAddressLink.innerHTML = "";
+			OwnerAddressLink.href = "";
+			OperatorAddressLink.innerHTML = "";
+			OperatorAddressLink.href = "";
+			
+			ContractResultText.style.color = "#FF0000";
+			ContractResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	UpdateWinnersButton.addEventListener('click', () => {
+		async_updateWinners();
+	});
+	
+	async function async_updateWinners() {
+		try {
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				WinnersResultText.style.color = "#FF0000";
+				WinnersResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+		
+			WinnersResultText.style.color = "#000000";
+			WinnersResultText.innerHTML = "Updating Winners...";
+			
+			WinnersResultTable.innerHTML = "";
+			
+			let lotteryNumber = await contractReadCall(injectedProvider, "get_lotteryNumber", []);
+			let promiseArray = [];
+			
+			let f = async (i) => {
+				let isCanceled = await contractReadCall(injectedProvider, "query_isLotteryCanceled", [i]);
+				let winnerAddress = undefined;
+				let winnerPrize = undefined;
+						
+				if(!isCanceled) {
+					winnerAddress = await contractReadCall(injectedProvider, "get_lotteryWinnerAddress", [i]);
+				
+					if(winnerAddress != 0) {
+						winnerPrize = await contractReadCall(injectedProvider, "get_lotteryWinnerPrize", [i]);
+					}
+				}
+				
+				return [isCanceled, winnerAddress, winnerPrize];
+			}
+			
+			for(let i = 1; i < lotteryNumber; i++) {
+				promiseArray[i] = f(i);
+			}
+			
+			let resultArray = await Promise.allSettled(promiseArray);
+			
+			for(let i = 1; i < lotteryNumber; i++) {
+				if(resultArray[i].status == "fulfilled") {
+					let valueArray = resultArray[i].value;
+					
+					let isCanceled = valueArray[0];
+					let winnerAddress = valueArray[1];
+					let winnerPrize = valueArray[2];
+					
+					if(isCanceled) {
+						let T = document.createElement('text');
+						T.innerHTML = "Lottery " + i + ": Canceled";
+						
+						let B = document.createElement('br');
+						
+						WinnersResultTable.appendChild(T);
+						WinnersResultTable.appendChild(B);
+					}
+					else {
+						if(winnerAddress == 0) {
+							let T = document.createElement('text');
+							T.innerHTML = "Lottery " + i + ": No Players";
+							
+							let B = document.createElement('br');
+							
+							WinnersResultTable.appendChild(T);
+							WinnersResultTable.appendChild(B);
+						}
+						else {
+							let T1 = document.createElement('text');
+							T1.innerHTML = "Lottery " + i + ": ";
+							
+							let A = document.createElement('a');
+							A.innerHTML = winnerAddress;
+							A.href = parent.getExplorerBaseUrl() + "address/" + winnerAddress;
+							A.target = "_blank";
+							
+							let T2 = document.createElement('text');
+							T2.innerHTML = " (" + ethers.utils.formatEther(winnerPrize) + " " + parent.getChainCoinName() + ")";
+							
+							let B = document.createElement('br');
+							
+							WinnersResultTable.appendChild(T1);
+							WinnersResultTable.appendChild(A);
+							WinnersResultTable.appendChild(T2);
+							WinnersResultTable.appendChild(B);
+						}
+					}
+				}
+				else {
+					let T = document.createElement('text');
+					T.innerHTML = "Lottery " + i + ": (Cannot Find Data)";
+					
+					let B = document.createElement('br');
+					
+					WinnersResultTable.appendChild(T);
+					WinnersResultTable.appendChild(B);
+				}
+			}
+			
+			WinnersResultText.style.color = "#000000";
+			WinnersResultText.innerHTML = "";
+		}
+		catch(error) {
+			WinnersResultTable.innerHTML = "";
+		
+			WinnersResultText.style.color = "#FF0000";
+			WinnersResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	async function async_updateWallet() {
+		try {
+			let arr = await getConnectedAddress(false);
+			if(arr[0]) {
+				ConnectAddressResultTable.innerHTML = "";
+			
+				ConnectAddressResultText.style.color = "#FF0000";
+				ConnectAddressResultText.innerHTML = arr[0];
+			}
+			else {
+				ConnectAddressResultText.style.color = "#000000";
+				ConnectAddressResultText.innerHTML = "";
+				
+				ConnectAddressResultTable.innerHTML = "";
+				
+				let T = document.createElement('text');
+				T.innerHTML = "Address Connected: ";
+				
+				let A = document.createElement('a');
+				A.innerHTML = arr[2];
+				A.href = parent.getExplorerBaseUrl() + "address/" + arr[2];
+				A.target = "_blank";
+				
+				ConnectAddressResultTable.appendChild(T);
+				ConnectAddressResultTable.appendChild(A);
+			}
+		}
+		catch(error) {
+			ConnectAddressResultTable.innerHTML = "";
+		
+			ConnectAddressResultText.style.color = "#FF0000";
+			ConnectAddressResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	ConnectButton.addEventListener('click', () => {
+		async_connectWallet();
+	});
+	
+	async function async_connectWallet() {
+		try {
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				ConnectAddressResultTable.innerHTML = "";
+			
+				ConnectAddressResultText.style.color = "#FF0000";
+				ConnectAddressResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			
+			ConnectAddressResultText.style.color = "#000000";
+			ConnectAddressResultText.innerHTML = "Connection in progress...";
+		
+			// Get permission from the user via the wallet application. This will always ask the user, even if they are already connected.
+			await eth_request(injectedProvider, "wallet_requestPermissions", [{"eth_accounts": {}}]);
+			
+			async_updateWallet();
+		}
+		catch(error) {
+			ConnectAddressResultTable.innerHTML = "";
+		
+			ConnectAddressResultText.style.color = "#FF0000";
+			ConnectAddressResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	UpdateStatusButton.addEventListener('click', () => {
+		async_updateStatus();
+	});
+	
+	async function async_updateStatus() {
+		try {
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				UpdateStatusResultText.style.color = "#FF0000";
+				UpdateStatusResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			
+			UpdateStatusResultText.style.color = "#000000";
+			UpdateStatusResultText.innerHTML = "Updating Status...";
+			
+			let promiseArray = [];
+			promiseArray.push(contractReadCall(injectedProvider, "get_lotteryNumber", []));
+			promiseArray.push(contractReadCall(injectedProvider, "get_lotteryActiveBlocks", []));
+			promiseArray.push(contractReadCall(injectedProvider, "get_remainingLotteryActiveBlocks", []));
+			promiseArray.push(contractReadCall(injectedProvider, "get_ticketPrice", []));
+			promiseArray.push(contractReadCall(injectedProvider, "get_totalTickets", []));
+			promiseArray.push(contractReadCall(injectedProvider, "query_isLotteryActive", []));
+			promiseArray.push(contractReadCall(injectedProvider, "query_isWinningTicketDrawn", []));
+			promiseArray.push(contractReadCall(injectedProvider, "get_playerPrizePool", []));
+			promiseArray.push(contractReadCall(injectedProvider, "get_bonusPrizePool", []));
+			
+			let resultArray = await Promise.allSettled(promiseArray);
+			
+			let lotteryNumber = resultArray[0].status == "fulfilled" ? resultArray[0].value : undefined;
+			let totalActiveBlocks = resultArray[1].status == "fulfilled" ? resultArray[1].value : undefined;
+			let remainingActiveBlocks = resultArray[2].status == "fulfilled" ? resultArray[2].value : undefined;
+			let ticketPrice = resultArray[3].status == "fulfilled" ? resultArray[3].value : undefined;
+			let totalTickets = resultArray[4].status == "fulfilled" ? resultArray[4].value : undefined;
+			let isLotteryActive = resultArray[5].status == "fulfilled" ? resultArray[5].value : undefined;
+			let isWinningTicketDrawn = resultArray[6].status == "fulfilled" ? resultArray[6].value : undefined;
+			let playerPrizePool = resultArray[7].status == "fulfilled" ? resultArray[7].value : undefined;
+			let bonusPrizePool = resultArray[8].status == "fulfilled" ? resultArray[8].value : undefined;
+			
+			let totalPrize;
+			if(playerPrizePool && bonusPrizePool) {
+				// Copy this calculation from the contract so that we know all the rounding is the same.
+				let operatorPrize = ethers.BigNumber.from(playerPrizePool).mul(5).div(100);
+				let ownerPrize = ethers.BigNumber.from(playerPrizePool).mul(5).div(100);
+				totalPrize = ethers.BigNumber.from(playerPrizePool).add(bonusPrizePool).sub(operatorPrize).sub(ownerPrize);
+			}
+			else {
+				totalPrize = undefined;
+			}
+			
+			const promiseError = "(Cannot Find Data)";
+			
+			LotteryNumberText.innerHTML = lotteryNumber ? Number(lotteryNumber) : promiseError;
+			TotalActiveBlocksText.innerHTML = totalActiveBlocks ? Number(totalActiveBlocks) : promiseError;
+			RemainingActiveBlocksText.innerHTML = remainingActiveBlocks ? Number(remainingActiveBlocks) : promiseError;
+			TicketPriceText.innerHTML = ticketPrice ? ethers.utils.formatEther(ticketPrice) + " " + parent.getChainCoinName() : promiseError;
+			TotalTicketsText.innerHTML = totalTickets ? Number(totalTickets) : promiseError;
+			LotteryActiveText.innerHTML = isLotteryActive == undefined ? promiseError : (isLotteryActive ? "Yes" : "No");
+			WinningTicketDrawnText.innerHTML = isWinningTicketDrawn == undefined ? promiseError : (isWinningTicketDrawn ? "Yes" : "No");
+			PlayerPrizePoolText.innerHTML = playerPrizePool ? ethers.utils.formatEther(playerPrizePool) + " " + parent.getChainCoinName() : promiseError;
+			BonusPrizePoolText.innerHTML = bonusPrizePool ? ethers.utils.formatEther(bonusPrizePool) + " " + parent.getChainCoinName() : promiseError;
+			TotalPrizeText.innerHTML = totalPrize ? ethers.utils.formatEther(totalPrize) + " " + parent.getChainCoinName() : promiseError;
+			
+			UpdateStatusResultText.style.color = "#000000";
+			UpdateStatusResultText.innerHTML = "";
+		}
+		catch(error) {
+			UpdateStatusResultText.style.color = "#FF0000";
+			UpdateStatusResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	PurchaseTicketsButton.addEventListener('click', () => {
+		async_purchaseTickets();
+	});
+
+	async function async_purchaseTickets() {
+		try {
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				UpdateStatusResultText.style.color = "#FF0000";
+				UpdateStatusResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			
+			PurchaseTicketsResultText.style.color = "#000000";
+			PurchaseTicketsResultText.innerHTML = "Ticket purchase in progress...";
+			
+			let inputString = TicketsNumberInput.value;
+			let ticketsNumber = Number(inputString);
+			let isLotteryActive = await contractReadCall(injectedProvider, "query_isLotteryActive", []);
+			
+			if(!isLotteryActive) {
+				PurchaseTicketsResultText.style.color = "#FF0000";
+				PurchaseTicketsResultText.innerHTML = "The lottery is not active. Further tickets cannot be purchased.";
+			}
+			else if(!Number.isInteger(ticketsNumber)) {
+				PurchaseTicketsResultText.style.color = "#FF0000";
+				PurchaseTicketsResultText.innerHTML = "You must enter an integer number of tickets to purchase.";
+			}
+			else if(ticketsNumber <= 0 || ticketsNumber > 10000) {
+				PurchaseTicketsResultText.style.color = "#FF0000";
+				PurchaseTicketsResultText.innerHTML = "You may only purchase between 1 and 10000 tickets.";
+			}
+			else {
+				let ticketPrice = await contractReadCall(injectedProvider, "get_ticketPrice", []);
+				let ticketsValue = ethers.BigNumber.from(ticketsNumber).mul(ethers.BigNumber.from(ticketPrice));
+				await contractWriteCall(injectedProvider, "action_purchaseTickets", [{value: ticketsValue}]);
+				
+				PurchaseTicketsResultText.style.color = "#000000";
+				PurchaseTicketsResultText.innerHTML = ticketsNumber + " tickets purchased.";
+			}
+		}
+		catch(error) {
+			PurchaseTicketsResultText.style.color = "#FF0000";
+			PurchaseTicketsResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	DrawWinningTicketButton.addEventListener('click', () => {
+		async_drawWinningTicket();
+	});
+
+	async function async_drawWinningTicket() {
+		try {
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				UpdateStatusResultText.style.color = "#FF0000";
+				UpdateStatusResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			
+			DrawWinningTicketResultText.style.color = "#000000";
+			DrawWinningTicketResultText.innerHTML = "Drawing winning ticket in progress...";
+			
+			let isLotteryActive = await contractReadCall(injectedProvider, "query_isLotteryActive", []);
+			let isWinningTicketDrawn = await contractReadCall(injectedProvider, "query_isWinningTicketDrawn", []);
+			let isDrawPermitted = await contractReadCall(injectedProvider, "query_isDrawPermitted", []);
+			let isEnoughChainlink = await contractReadCall(injectedProvider, "query_isEnoughChainlink", []);
+		
+			if(isLotteryActive) {
+				DrawWinningTicketResultText.style.color = "#FF0000";
+				DrawWinningTicketResultText.innerHTML = "The lottery is still active. The winning ticket cannot be drawn yet.";
+			}
+			else if(isWinningTicketDrawn) {
+				DrawWinningTicketResultText.style.color = "#FF0000";
+				DrawWinningTicketResultText.innerHTML = "The winning ticket has already been drawn.";
+			}
+			else if(!isDrawPermitted ) {
+				let remainingBlocks = await contractReadCall(injectedProvider, "get_remainingBlocksBeforeRedraw", []);
+				
+				DrawWinningTicketResultText.style.color = "#FF0000";
+				DrawWinningTicketResultText.innerHTML = "Drawing the winning ticket has already started. A retry will be permitted after " + remainingBlocks + " more blocks.";
+			}
+			else if(!isEnoughChainlink) {
+				DrawWinningTicketResultText.style.color = "#FF0000";
+				DrawWinningTicketResultText.innerHTML = "There is not enough Chainlink in the contract to draw the winning ticket.";
+			}
+			else {
+				// In a multiplayer game, we need to override the gas value because estimates tend to be too low.
+				let isZeroPlayerGame = await contractReadCall(injectedProvider, "query_isZeroPlayerGame", []);
+				let isOnePlayerGame = await contractReadCall(injectedProvider, "query_isOnePlayerGame", []);
+				let needsChainlink = !isZeroPlayerGame && !isOnePlayerGame;
+				
+				let overrides = {};
+				if(needsChainlink) {
+					overrides = {gasLimit: "400000"};
+				}
+				
+				await contractWriteCall(injectedProvider, "action_drawWinningTicket", [overrides]);
+				
+				DrawWinningTicketResultText.style.color = "#000000";
+				if(needsChainlink) {
+					DrawWinningTicketResultText.innerHTML = "Drawing winning ticket has started.";
+				}
+				else {
+					DrawWinningTicketResultText.innerHTML = "Drawing winning ticket complete.";
+				}
+			}
+		}
+		catch(error) {
+			DrawWinningTicketResultText.style.color = "#FF0000";
+			DrawWinningTicketResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	EndLotteryButton.addEventListener('click', () => {
+		async_endLottery();
+	});
+
+	async function async_endLottery() {
+		try {
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				UpdateStatusResultText.style.color = "#FF0000";
+				UpdateStatusResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			
+			EndLotteryResultText.style.color = "#000000";
+			EndLotteryResultText.innerHTML = "Ending lottery in progress...";
+			
+			let isWinningTicketDrawn = await contractReadCall(injectedProvider, "query_isWinningTicketDrawn", []);
+		
+			if(!isWinningTicketDrawn) {
+				EndLotteryResultText.style.color = "#FF0000";
+				EndLotteryResultText.innerHTML = "The winning ticket has not been drawn yet.";
+			}
+			else {
+				await contractWriteCall(injectedProvider, "action_endCurrentLottery", []);
+				
+				EndLotteryResultText.style.color = "#000000";
+				EndLotteryResultText.innerHTML = "Ending lottery complete.";
+			}
+		}
+		catch(error) {
+			EndLotteryResultText.style.color = "#FF0000";
+			EndLotteryResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	LookupAddressTicketsButton.addEventListener('click', () => {
+		async_lookupAddressTicketsButton();
+	});
+	
+	async function async_lookupAddressTicketsButton() {
+		try {
+			let arr = await getConnectedAddress(true);
+			if(arr[0]) {
+				LookupAddressTicketsResultText.style.color = "#FF0000";
+				LookupAddressTicketsResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			let address = arr[2];
+			
+			LookupAddressTicketsResultText.style.color = "#000000";
+			LookupAddressTicketsResultText.innerHTML = "Lookup in progress...";
+		
+			let result = await contractReadCall(injectedProvider, "get_addressTickets", [address]);
+			
+			LookupAddressTicketsResultText.style.color = "#000000";
+			LookupAddressTicketsResultText.innerHTML = "Tickets: " + Number(result);
+		}
+		catch(error) {
+			LookupAddressTicketsResultText.style.color = "#FF0000";
+			LookupAddressTicketsResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	LookupAddressClaimableBalanceButton.addEventListener('click', () => {
+		async_lookupAddressClaimableBalance();
+	});
+	
+	async function async_lookupAddressClaimableBalance() {
+		try {
+			let arr = await getConnectedAddress(true);
+			if(arr[0]) {
+				LookupAddressClaimableBalanceResultText.style.color = "#FF0000";
+				LookupAddressClaimableBalanceResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			let address = arr[2];
+			
+			LookupAddressClaimableBalanceResultText.style.color = "#000000";
+			LookupAddressClaimableBalanceResultText.innerHTML = "Lookup in progress...";
+		
+			let result = await contractReadCall(injectedProvider, "get_addressClaimableBalance", [address]);
+			
+			LookupAddressClaimableBalanceResultText.style.color = "#000000";
+			LookupAddressClaimableBalanceResultText.innerHTML = "Balance: " + ethers.utils.formatEther(result) + " " + parent.getChainCoinName();
+		}
+		catch(error) {
+			LookupAddressClaimableBalanceResultText.style.color = "#FF0000";
+			LookupAddressClaimableBalanceResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	WithdrawAddressClaimableBalanceButton.addEventListener('click', () => {
+		async_withdrawAddressClaimableBalance();
+	});
+	
+	async function async_withdrawAddressClaimableBalance() {				
+		try {
+			let arr = await getConnectedAddress(true);
+			if(arr[0]) {
+				WithdrawAddressClaimableBalanceResultText.style.color = "#FF0000";
+				WithdrawAddressClaimableBalanceResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			let address = arr[2];
+			
+			WithdrawAddressClaimableBalanceResultText.style.color = "#000000";
+			WithdrawAddressClaimableBalanceResultText.innerHTML = "Withdraw in progress...";
+			
+			let result = await contractReadCall(injectedProvider, "get_addressClaimableBalance", [address]);
+			if(result.eq(0)) {
+				WithdrawAddressClaimableBalanceResultText.style.color = "#FF0000";
+				WithdrawAddressClaimableBalanceResultText.innerHTML = "There is no balance to withdraw.";
+			}
+			else {
+				await contractWriteCall(injectedProvider, "withdraw_addressClaimableBalance", []);
+				
+				WithdrawAddressClaimableBalanceResultText.style.color = "#000000";
+				WithdrawAddressClaimableBalanceResultText.innerHTML = "Withdraw complete.";
+			}
+		}
+		catch(error) {
+			WithdrawAddressClaimableBalanceResultText.style.color = "#FF0000";
+			WithdrawAddressClaimableBalanceResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	LookupAddressRefundButton.addEventListener('click', () => {
+		async_lookupAddressRefund();
+	});
+	
+	async function async_lookupAddressRefund() {
+		try {
+			let arr = await getConnectedAddress(true);
+			if(arr[0]) {
+				LookupAddressRefundResultText.style.color = "#FF0000";
+				LookupAddressRefundResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			let address = arr[2];
+			
+			LookupAddressRefundResultText.style.color = "#000000";
+			LookupAddressRefundResultText.innerHTML = "Lookup in progress...";
+		
+			let inputString = RefundLotteryInput.value;
+			let lotteryNumber = Number(inputString);
+			
+			if(!Number.isInteger(lotteryNumber)) {
+				LookupAddressRefundResultText.style.color = "#FF0000";
+				LookupAddressRefundResultText.innerHTML = "You must enter an integer lottery number.";
+			}
+			else if(lotteryNumber <= 0) {
+				LookupAddressRefundResultText.style.color = "#FF0000";
+				LookupAddressRefundResultText.innerHTML = "The lottery number must be greater than 0.";
+			}
+			else {
+				let isLotteryCanceled = await contractReadCall(injectedProvider, "query_isLotteryCanceled", [lotteryNumber]);
+				if(!isLotteryCanceled) {
+					LookupAddressRefundResultText.style.color = "#FF0000";
+					LookupAddressRefundResultText.innerHTML = "Lottery " + lotteryNumber + " was not canceled so there are no refunds available.";
+				}
+				else {
+					let result = await contractReadCall(injectedProvider, "get_addressRefund", [lotteryNumber, address]);
+					
+					LookupAddressRefundResultText.style.color = "#000000";
+					LookupAddressRefundResultText.innerHTML = "Refund Amount: " + ethers.utils.formatEther(result) + " " + parent.getChainCoinName();
+				}
+			}
+		}
+		catch(error) {
+			LookupAddressRefundResultText.style.color = "#FF0000";
+			LookupAddressRefundResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	WithdrawAddressRefundButton.addEventListener('click', () => {
+		async_withdrawAddressRefund();
+	});
+	
+	async function async_withdrawAddressRefund() {
+		try {
+			let arr = await getConnectedAddress(true);
+			if(arr[0]) {
+				WithdrawAddressRefundResultText.style.color = "#FF0000";
+				WithdrawAddressRefundResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			let address = arr[2];
+			
+			WithdrawAddressRefundResultText.style.color = "#000000";
+			WithdrawAddressRefundResultText.innerHTML = "Withdraw in progress...";
+		
+			let inputString = RefundLotteryInput.value;
+			let lotteryNumber = Number(inputString);
+			
+			if(!Number.isInteger(lotteryNumber)) {
+				WithdrawAddressRefundResultText.style.color = "#FF0000";
+				WithdrawAddressRefundResultText.innerHTML = "You must enter an integer lottery number.";
+			}
+			else if(lotteryNumber <= 0) {
+				WithdrawAddressRefundResultText.style.color = "#FF0000";
+				WithdrawAddressRefundResultText.innerHTML = "The lottery number must be greater than 0.";
+			}
+			else {
+				let isLotteryCanceled = await contractReadCall(injectedProvider, "query_isLotteryCanceled", [lotteryNumber]);
+				if(!isLotteryCanceled) {
+					WithdrawAddressRefundResultText.style.color = "#FF0000";
+					WithdrawAddressRefundResultText.innerHTML = "Lottery " + lotteryNumber + " was not canceled so there are no refunds available.";
+				}
+				else {
+					let result = await contractReadCall(injectedProvider, "get_addressRefund", [lotteryNumber, address]);
+					if(result.eq(0)) {
+						WithdrawAddressRefundResultText.style.color = "#FF0000";
+						WithdrawAddressRefundResultText.innerHTML = "There is no balance to withdraw.";
+					}
+					else {
+						await contractWriteCall(injectedProvider, "withdraw_addressRefund", [lotteryNumber]);
+						
+						WithdrawAddressRefundResultText.style.color = "#000000";
+						WithdrawAddressRefundResultText.innerHTML = "Withdraw complete.";
+					}
+				}
+			}
+		}
+		catch(error) {
+			WithdrawAddressRefundResultText.style.color = "#FF0000";
+			WithdrawAddressRefundResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	DonateBonusPrizePoolButton.addEventListener('click', () => {
+		async_donateBonusPrizePoolButton();
+	});
+	
+	async function async_donateBonusPrizePoolButton() {
+		try {
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				UpdateStatusResultText.style.color = "#FF0000";
+				UpdateStatusResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			
+			DonateBonusPrizePoolResultText.style.color = "#000000";
+			DonateBonusPrizePoolResultText.innerHTML = "Donation in progress...";
+		
+			let inputString = DonateBonusPrizePoolInput.value;
+			let donationValue = Number(inputString);
+			
+			if(!Number.isFinite(donationValue)) {
+				DonateBonusPrizePoolResultText.style.color = "#FF0000";
+				DonateBonusPrizePoolResultText.innerHTML = "You must enter a valid amount to donate.";
+			}
+			else if(donationValue <= 0) {
+				DonateBonusPrizePoolResultText.style.color = "#FF0000";
+				DonateBonusPrizePoolResultText.innerHTML = "The donation amount must be greater than 0.";
+			}
+			else {
+				await contractWriteCall(injectedProvider, "deposit_bonusPrizePool", [{value: ethers.utils.parseEther(inputString)}]);
+				
+				DonateBonusPrizePoolResultText.style.color = "#000000";
+				DonateBonusPrizePoolResultText.innerHTML = "Donation complete.";
+			}
+		}
+		catch(error) {
+			DonateBonusPrizePoolResultText.style.color = "#FF0000";
+			DonateBonusPrizePoolResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	DonateOperatorButton.addEventListener('click', () => {
+		async_donateOperatorButton();
+	});
+	
+	async function async_donateOperatorButton() {
+		try {
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				UpdateStatusResultText.style.color = "#FF0000";
+				UpdateStatusResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			
+			DonateOperatorResultText.style.color = "#000000";
+			DonateOperatorResultText.innerHTML = "Donation in progress...";
+		
+			let inputString = DonateOperatorInput.value;
+			let donationValue = Number(inputString);
+			
+			if(!Number.isFinite(donationValue)) {
+				DonateOperatorResultText.style.color = "#FF0000";
+				DonateOperatorResultText.innerHTML = "You must enter a valid amount to donate.";
+			}
+			else if(donationValue <= 0) {
+				DonateOperatorResultText.style.color = "#FF0000";
+				DonateOperatorResultText.innerHTML = "The donation amount must be greater than 0.";
+			}
+			else {
+				// Deposit to the contract so the operator can withdraw the funds later.
+				await contractWriteCall(injectedProvider, "deposit_contractFunds", [{value: ethers.utils.parseEther(inputString)}]);
+
+				DonateOperatorResultText.style.color = "#000000";
+				DonateOperatorResultText.innerHTML = "Donation complete.";
+			}
+		}
+		catch(error) {
+			DonateOperatorResultText.style.color = "#FF0000";
+			DonateOperatorResultText.innerHTML = getErrorString(error);
+		}
+	}
+			
+	// Util Functions
+	async function eth_request(injectedProvider, method, params) {
+		return await injectedProvider.request({"method": method, "params": params});
+	}
+	
+	async function contractReadCall(injectedProvider, method, args) {
+		const provider = new ethers.providers.Web3Provider(injectedProvider, new ethers.providers.getNetwork(parent.getChainID()));
+		const contractRead = new ethers.Contract(parent.getContractAddress(), contractInterface, provider);
+		return await contractRead[method](...args);
+	}
+	
+	async function contractWriteCall(injectedProvider, method, args) {
+		const provider = new ethers.providers.Web3Provider(injectedProvider, new ethers.providers.getNetwork(parent.getChainID()));
+		
+		// Get permission from the user via the wallet application. This only asks the user if they are not already connected.
+		await eth_request(injectedProvider, "eth_requestAccounts", []);
+		
+		const signer = provider.getSigner();
+		const contractWrite = new ethers.Contract(parent.getContractAddress(), contractInterface, signer);
+		
+		let call = await contractWrite[method](...args);
+		await call.wait();
+	}
+	
+	function getNetworkString(network) {
+		let networkString = undefined;
+		
+		if(network) {
+			networkString = network.name + " (chain id: " + network.chainId + ")"; 
+		}
+		
+		return networkString;
+	}
+	
+	function getInjectedProvider() {
+		// Returns a Web3 injection if present and on the correct network, otherwise return an error.
+		let errorString = undefined;
+		let injectedProvider = undefined;
+		
+		try {
+			// This is only available on the parent.
+			injectedProvider = window.parent.ethereum;
+			
+			if(injectedProvider == undefined) {
+				errorString = "A Web3 wallet is not present.";
+			}
+			else if(!injectedProvider.isConnected()) {
+				errorString = "A Web3 wallet is present, but it is not connected to the blockchain.";
+			}
+			else if(injectedProvider.networkVersion != parent.getChainID()) {
+				let actualNetwork = ethers.providers.getNetwork(Number(injectedProvider.networkVersion));
+				let expectedNetwork = ethers.providers.getNetwork(parent.getChainID());
+				errorString = "A Web3 wallet is connected, but it is on the wrong network.\n" + 
+				"    Actual Network: " + getNetworkString(actualNetwork) + "\n" + 
+				"    Expected Network: " + getNetworkString(expectedNetwork);
+			}
+		}
+		catch(error) {
+			errorString = "Unknown Error.\n\n" + error;
+			injectedProvider = undefined;
+			logError("Error", error);
+		}
+		
+		return [errorString, injectedProvider]
+	}
+	
+	async function getConnectedAddress(askForConnection) {
+		// Return an address if the Web3 injection is present, on the correct network, and there is exactly one connected address, otherwise return an error.
+		let errorString = undefined;
+		let injectedProvider = undefined;
+		let address = undefined;
+		
+		try {
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				errorString = arr[0];
+				return [errorString, injectedProvider, address];
+			}
+			
+			injectedProvider = arr[1];
+			
+			if(askForConnection) {
+				await eth_request(injectedProvider, "eth_requestAccounts", []);
+			}
+		
+			let connectedAddressArray = await eth_request(injectedProvider, "eth_accounts", []);
+			if(connectedAddressArray.length == 0) {
+				errorString = "A Web3 wallet is connected, but no addresses are connected to this dapp.";
+			}
+			else if(connectedAddressArray.length > 1) {
+				errorString = "A Web3 wallet is connected, but multiple addresses are connected to this dapp. Only a single address can be connected to this dapp at once.";
+			}
+			else {
+				address = connectedAddressArray[0];
+			}
+		}
+		catch(error) {
+			errorString = getErrorString(error);
+			injectedProvider = undefined;
+			address = undefined;
+		}
+		
+		return [errorString, injectedProvider, address];
+	}
+	
+	function getErrorString(error) {
+		try {
+			if(error && error.error && error.error.data && error.error.data.data && canParseSmartContractErrorData(error.error.data.data)) {
+				// Write error.
+				let errorDescription = parseSmartContractErrorData(error.error.data.data);
+				let errString = "Smart Contract Error: " + errorDescription.name;
+				let errorArgs = errorDescription.args;
+				for(let key in errorArgs) {
+					// Filter out the numeric indices to avoid printing the same values twice.
+					if(isNaN(key)) {
+						errString = errString + "\n    " + key + ": " + errorArgs[key];
+					}
+				}
+				
+				return errString;
+			}
+			else if(error && error.data && canParseSmartContractErrorData(error.data)) {
+				// Read error.
+				let errorDescription = parseSmartContractErrorData(error.data);
+				let errString = "Smart Contract Error: " + errorDescription.name;
+				let errorArgs = errorDescription.args;
+				for(let key in errorArgs) {
+					// Filter out the numeric indices to avoid printing the same values twice.
+					if(isNaN(key)) {
+						errString = errString + "\n    " + key + ": " + errorArgs[key];
+					}
+				}
+				
+				return errString;
+			}
+			else if(error && error.code == "ACTION_REJECTED") {
+				// Transaction canceled.
+				return "The transaction was canceled.";
+			}
+			else if(error && error.code == "UNPREDICTABLE_GAS_LIMIT") {
+				// Cannot estimate gas.
+				return "Cannot estimate gas for the transaction.";
+			}
+			else if(error && error.code == "CALL_EXCEPTION") {
+				// The call either ran out of gas or ran into another problem.
+				return "The transaction failed.";
+			}
+			else if(error && error.code == "UNSUPPORTED_OPERATION") {
+				// The wallet was disconnected but an operation was still attempted.
+				return "The operation was not supported. Make sure your wallet is connected to the dapp.";
+			}
+			else if(error && error.code == 4001) {
+				// Connection canceled.
+				return "The connection was canceled.";
+			}
+			else if(error && error.code == -32002) {
+				return error.message;
+			}
+			else if(error && error.code == -32603) {
+				// Internal JSON-RPC error. Examples: Insufficient funds for the transaction. Exceed maximum block range: 5000.
+				return error.message + "\n" + error.data.message;
+			}
+			else {
+				// Just give up.
+				logError("Error", error);
+				
+				return "Unknown Error.\n\n" + error;
+			}
+		}
+		catch(error2) {
+			// Just give up.
+			logError("Error 1", error);
+			logError("Error 2", error2);
+			
+			return "Unknown Error 1.\n\n" + error + "\n\nUnknown Error 2.\n\n" + error2;
+		}
+	}
+	
+	function logError(labelStr, errorObject) {
+		console.error(labelStr + ":\n\n" + JSON.stringify(errorObject, Object.getOwnPropertyNames(errorObject), 4));
+	}
+	
+	function canParseSmartContractErrorData(errorData) {
+		try {
+			parseSmartContractErrorData(errorData);
+			return true;
+		}
+		catch {
+			return false;
+		}
+	}
+	
+	function parseSmartContractErrorData(errorData) {
+		if (errorData.startsWith('0x08c379a0')) { // decode Error(string)
+			const content = `0x${errorData.substring(10)}`;
+			const reason = utils.defaultAbiCoder.decode(["string"], content);
+
+			return reason[0]; // reason: string; for standard revert error string
+		}
+
+		if (errorData.startsWith('0x4e487b71')) { // decode Panic(uint)
+			const content = `0x${errorData.substring(10)}`;
+			const code = utils.defaultAbiCoder.decode(["uint"], content);
+
+			return code[0];
+		}
+	
+		return contractInterface.parseError(errorData);
+	}
+</script>

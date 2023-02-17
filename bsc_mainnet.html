@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US" style="overflow:hidden;">
+	<head>
+		<title>The Musicslayer Lottery (BSC Mainnet)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+		<link rel="apple-touch-icon" type="image/png" href="favicon.png"/>
+	</head>
+	
+	<script>
+		function getChainCoinName() {
+			return "BNB";
+		}
+		
+		function getChainDisplayName() {
+			return "BSC Mainnet";
+		}
+		
+		function getChainID() {
+			return 56;
+		}
+		
+		function getContractAddress() {
+			return "0xf80A6605D57Baef4c16423Fa5390B14DcB2017D0";
+		}
+		
+		function getExplorerBaseUrl() {
+			return "https://bscscan.com/";
+		}
+		
+		async function getContractJSON() {
+			let jsonData = await fetch("bsc_mainnet_contract_abi.json");
+			return await jsonData.json();
+		}
+	</script>
+	
+	<body style="margin:0px;">
+		<iframe style="width:100vw;height:100vh;border:none;" src="base.html" title="The Musicslayer Lottery (BSC Mainnet)"></iframe>
+	</body>
+</html>
