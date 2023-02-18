@@ -281,6 +281,8 @@
 			let injectedProvider = arr[1];
 			let address = arr[2];
 			
+			NFTOwnerText.innerHTML = "";
+			NFTImage.src = "";
 			NFTDisplayResultText.style.color = "#000000";
 			NFTDisplayResultText.innerHTML = "Drawing in progress...";
 			
@@ -288,20 +290,19 @@
 			let id = Number(inputString);
 			
 			if(!Number.isInteger(id)) {
-				NFTImage.src = "";
 				NFTDisplayResultText.style.color = "#FF0000";
 				NFTDisplayResultText.innerHTML = "You must enter an integer NFT ID.";
 			}
 			else if(id <= 0 || id > 100) {
-				NFTImage.src = "";
 				NFTDisplayResultText.style.color = "#FF0000";
 				NFTDisplayResultText.innerHTML = "NFT ID must be between 1 and 100.";
 			}
 			else {
 				let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
 				
+				NFTOwnerText.innerHTML = nftOwner;
+				
 				if(nftOwner != address) {
-					NFTImage.src = "";
 					NFTDisplayResultText.style.color = "#FF0000";
 					NFTDisplayResultText.innerHTML = "Connected address does not own this NFT.";
 				}
