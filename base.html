@@ -747,8 +747,8 @@
 			else {
 				let donationValueETH = ethers.utils.parseEther(inputString);
 				console.error("donationValueETH: " + donationValueETH);
-				console.error("X: " + await getAddressBalance(injectedProvider, address));
-				let addressBalance = ethers.utils.parseEther(await getAddressBalance(injectedProvider, address));
+				console.error("X: " + String(await getAddressBalance(injectedProvider, address)));
+				let addressBalance = ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address)));
 				
 				if(addressBalance < donationValueETH) {
 					DonateResultText.style.color = RED;
