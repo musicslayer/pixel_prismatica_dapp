@@ -745,7 +745,7 @@
 				DonateResultText.innerHTML = "The donation amount must be greater than 0.";
 			}
 			else {
-				let donationValueETH = ethers.utils.parseEther(donationValue);
+				let donationValueETH = ethers.utils.parseEther(inputString);
 				let addressBalance = ethers.utils.parseEther(getAddressBalance(injectedProvider, address));
 				
 				if(addressBalance < donationValueETH) {
