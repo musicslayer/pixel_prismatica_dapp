@@ -299,10 +299,9 @@
 			}
 			else {
 				let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
+				NFTOwnerText.innerHTML = nftOwner;
 				
-				NFTOwnerText.innerHTML = nftOwner + " vs. " + address;
-				
-				if(nftOwner != address) {
+				if(nftOwner.toLowerCase() != address.toLowerCase()) {
 					NFTDisplayResultText.style.color = "#FF0000";
 					NFTDisplayResultText.innerHTML = "Connected address does not own this NFT.";
 				}
