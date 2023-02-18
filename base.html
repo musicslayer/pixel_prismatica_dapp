@@ -755,7 +755,7 @@
 				console.error("donationValueETH: " + donationValueETH);
 				console.error("addressBalance: " + addressBalance);
 				
-				if(ethers.BigNumber.from(addressBalance) < ethers.BigNumber.from(donationValueETH)) {
+				if(ethers.BigNumber.from(addressBalance).lt(ethers.BigNumber.from(donationValueETH))) {
 					DonateResultText.style.color = RED;
 					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + ethers.utils.formatEther(addressBalance) + " " + parent.getChainCoinName();
 				}
