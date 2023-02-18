@@ -24,6 +24,11 @@
 <br/><br/><br/>
 
 <h2><u>Configuration</u></h2>
+
+<input id="ID_ConfigIDInput" type="text" maxlength="9"></input>
+
+<br/>
+
 <text>Color Mode:</text><br/>
 <input type="radio" name="color_mode" id="ID_RadioColorMode0" value="0" checked="checked">
 <label for="ID_RadioColorMode0">Rainbow Light</label><br/>
@@ -108,6 +113,8 @@
 	const UpdateMintDataButton = document.querySelector('#ID_UpdateMintDataButton');
 	const UpdateMintDataResultText = document.querySelector('#ID_UpdateMintDataResultText');
 	const MintButton = document.querySelector('#ID_MintButton');
+	
+	const ConfigIDInput = document.querySelector('#ID_ConfigIDInput');
 	
 	const RadioColorMode0 = document.querySelector('#ID_RadioColorMode0');
 	const RadioColorMode1 = document.querySelector('#ID_RadioColorMode1');
@@ -298,7 +305,7 @@
 			SaveConfigResultText.style.color = "#000000";
 			SaveConfigResultText.innerHTML = "Save in progress...";
 			
-			let inputString = NFTIDInput.value;
+			let inputString = ConfigIDInput.value;
 			let id = Number(inputString);
 			
 			if(!Number.isInteger(id)) {
