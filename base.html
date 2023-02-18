@@ -757,7 +757,7 @@
 				
 				if(addressBalance < donationValueETH) {
 					DonateResultText.style.color = RED;
-					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + ethers.utils.formatEther(String(addressBalance)) + " " + parent.getChainCoinName();
+					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + ethers.utils.formatEther(addressBalance) + " " + parent.getChainCoinName();
 				}
 				else {
 					await contractWriteCall(injectedProvider, "donate", [{value: ethers.utils.parseEther(inputString)}]);
@@ -779,9 +779,8 @@
 	}
 	
 	async function getAddressBalance(injectedProvider, address) {
-		// Returns balance in Wei.
-		// Make sure we convert the hex value to a decimal value before returning.
-		return parseInt(await injectedProvider.request({"method": "eth_getBalance", "params": [address]}), 16)
+		// Returns balance in Wei. Make sure we convert hex to decimal before returning.
+		return String(parseInt(await injectedProvider.request({"method": "eth_getBalance", "params": [address]}), 16));
 	}
 	
 	async function eth_request(injectedProvider, method, params) {
