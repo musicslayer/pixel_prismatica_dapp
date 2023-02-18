@@ -394,7 +394,7 @@
 			let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
 			
 			UpdateMintDataResultText.style.color = GREEN;
-			UpdateMintDataResultText.innerHTML = totalMintsText + "   " + mintFeeText;
+			UpdateMintDataResultText.innerHTML = totalMintsText + "&nbsp;&nbsp;&nbsp;" + mintFeeText;
 		}
 		catch(error) {
 			UpdateMintDataResultText.style.color = RED;
