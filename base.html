@@ -746,10 +746,14 @@
 			}
 			else {
 				let donationValueETH = ethers.utils.parseEther(inputString);
+				//console.error("donationValueETH: " + donationValueETH);
+				//console.error("X: " + String(await getAddressBalance(injectedProvider, address)));
+				//console.error("E: " + ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address))));
+				//let addressBalance = ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address)));
+				
+				let addressBalance = await getAddressBalance(injectedProvider, address);
 				console.error("donationValueETH: " + donationValueETH);
-				console.error("X: " + String(await getAddressBalance(injectedProvider, address)));
-				console.error("E: " + ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address))));
-				let addressBalance = ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address)));
+				console.error("addressBalance: " + addressBalance);
 				
 				if(addressBalance < donationValueETH) {
 					DonateResultText.style.color = RED;
@@ -775,6 +779,7 @@
 	}
 	
 	async function getAddressBalance(injectedProvider, address) {
+		// Returns balance in Wei.
 		// Make sure we convert the hex value to a decimal value before returning.
 		return parseInt(await injectedProvider.request({"method": "eth_getBalance", "params": [address]}), 16)
 	}
