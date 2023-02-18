@@ -25,7 +25,7 @@
 
 <h2><u>Configuration</u></h2>
 <text>Color Mode:</text><br/>
-<input type="radio" name="color_mode" id="ID_RadioColorMode0" value="0">
+<input type="radio" name="color_mode" id="ID_RadioColorMode0" value="0" checked="checked">
 <label for="ID_RadioColorMode0">Rainbow Light</label><br/>
 <input type="radio" name="color_mode" id="ID_RadioColorMode1" value="1">
 <label for="ID_RadioColorMode1">Rainbow Dark</label><br/>
@@ -52,8 +52,18 @@
 
 <br/>
 
+<text>Animation Duration:</text><br/>
+<input type="radio" name="duration" id="ID_RadioDuration0" value="0" checked="checked">
+<label for="ID_RadioDuration0">Short</label><br/>
+<input type="radio" name="duration" id="ID_RadioDuration1" value="1">
+<label for="ID_RadioDuration1">Medium</label><br/>
+<input type="radio" name="duration" id="ID_RadioDuration2" value="2">
+<label for="ID_RadioDuration2">Long</label><br/>
+
+<br/>
+
 <text>Size:</text><br/>
-<input type="radio" name="image_size" id="ID_RadioImageSize0" value="0">
+<input type="radio" name="image_size" id="ID_RadioImageSize0" value="0" checked="checked">
 <label for="ID_RadioImageSize0">Small</label><br/>
 <input type="radio" name="image_size" id="ID_RadioImageSize1" value="1">
 <label for="ID_RadioImageSize1">Medium</label><br/>
@@ -111,6 +121,10 @@
 	const RadioColorMode9 = document.querySelector('#ID_RadioColorMode9');
 	const RadioColorMode10 = document.querySelector('#ID_RadioColorMode10');
 	const RadioColorMode11 = document.querySelector('#ID_RadioColorMode11');
+	
+	const RadioDuration0 = document.querySelector('#ID_RadioDuration0');
+	const RadioDuration1 = document.querySelector('#ID_RadioDuration1');
+	const RadioDuration2 = document.querySelector('#ID_RadioDuration2');
 	
 	const RadioImageSize0 = document.querySelector('#ID_RadioImageSize0');
 	const RadioImageSize1 = document.querySelector('#ID_RadioImageSize1');
@@ -263,6 +277,144 @@
 			UpdateStatusResultText.style.color = "#FF0000";
 			UpdateStatusResultText.innerHTML = getErrorString(error);
 		}
+	}
+	
+	SaveConfigButton.addEventListener('click', () => {
+		async_saveConfig();
+	});
+
+	async function async_saveConfig() {
+		try {
+			let arr = await getConnectedAddress(true);
+			if(arr[0]) {
+				SaveConfigResultText.style.color = "#FF0000";
+				SaveConfigResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			let address = arr[2];
+			
+			SaveConfigResultText.style.color = "#000000";
+			SaveConfigResultText.innerHTML = "Save in progress...";
+			
+			let inputString = NFTIDInput.value;
+			let id = Number(inputString);
+			
+			if(!Number.isInteger(id)) {
+				SaveConfigResultText.style.color = "#FF0000";
+				SaveConfigResultText.innerHTML = "You must enter an integer NFT ID.";
+			}
+			else if(id <= 0 || id > 100) {
+				SaveConfigResultText.style.color = "#FF0000";
+				SaveConfigResultText.innerHTML = "NFT ID must be between 1 and 100.";
+			}
+			else {
+				let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
+				NFTOwnerText.innerHTML = nftOwner;
+				
+				if(nftOwner.toLowerCase() != address.toLowerCase()) {
+					SaveConfigResultText.style.color = "#FF0000";
+					SaveConfigResultText.innerHTML = "Connected address does not own this NFT.";
+				}
+				else {
+					let colorMode = getColorMode();
+					let duration = getDuration();
+					let imageSize = getImageSize();
+					
+					await contractWriteCall(injectedProvider, "action_applyConfig", [id, colorMode, duration, imageSize]);
+				
+					SaveConfigResultText.style.color = "#000000";
+					SaveConfigResultText.innerHTML = "";
+				}
+			}
+		}
+		catch(error) {
+			NFTImage.src = "";
+			NFTDisplayResultText.style.color = "#FF0000";
+			NFTDisplayResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	function getColorMode() {
+		let colorMode;
+		if(RadioColorMode0.checked) {
+			colorMode = 0;
+		}
+		else if(RadioColorMode1.checked) {
+			colorMode = 1;
+		}
+		else if(RadioColorMode2.checked) {
+			colorMode = 2;
+		}
+		else if(RadioColorMode3.checked) {
+			colorMode = 3;
+		}
+		else if(RadioColorMode4.checked) {
+			colorMode = 4;
+		}
+		else if(RadioColorMode5.checked) {
+			colorMode = 5;
+		}
+		else if(RadioColorMode6.checked) {
+			colorMode = 6;
+		}
+		else if(RadioColorMode7.checked) {
+			colorMode = 7;
+		}
+		else if(RadioColorMode8.checked) {
+			colorMode = 8;
+		}
+		else if(RadioColorMode9.checked) {
+			colorMode = 9;
+		}
+		else if(RadioColorMode10.checked) {
+			colorMode = 10;
+		}
+		else if(RadioColorMode11.checked) {
+			colorMode = 11;
+		}
+		else {
+			// Default to 0
+			colorMode = 0;
+		}
+		return colorMode;
+	}
+	
+	function getDuration() {
+		let duration;
+		if(RadioDuration0.checked) {
+			duration = 0;
+		}
+		else if(RadioDuration1.checked) {
+			duration = 1;
+		}
+		else if(RadioDuration2.checked) {
+			duration = 2;
+		}
+		else {
+			// Default to 1
+			duration = 1;
+		}
+		return duration;
+	}
+	
+	function getImageSize() {
+		let imageSize;
+		if(RadioImageSize0.checked) {
+			imageSize = 0;
+		}
+		else if(RadioImageSize1.checked) {
+			imageSize = 1;
+		}
+		else if(RadioImageSize2.checked) {
+			imageSize = 2;
+		}
+		else {
+			// Default to 1
+			imageSize = 1;
+		}
+		return imageSize;
 	}
 
 	NFTDisplayButton.addEventListener('click', () => {
