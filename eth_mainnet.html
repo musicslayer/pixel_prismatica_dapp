@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" style="overflow:hidden;">
 	<head>
-		<title>Pixel Prismatica NFT DApp (BSC Mainnet)</title>
+		<title>Pixel Prismatica NFT DApp (ETH Mainnet)</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link rel="shortcut icon" type="image/png" href="favicon.png"/>
 		<link rel="apple-touch-icon" type="image/png" href="favicon.png"/>
@@ -9,15 +9,15 @@
 	
 	<script>
 		function getChainCoinName() {
-			return "BNB";
+			return "ETH";
 		}
 		
 		function getChainDisplayName() {
-			return "BSC Mainnet";
+			return "ETH Mainnet";
 		}
 		
 		function getChainID() {
-			return 56;
+			return 1;
 		}
 		
 		function getContractAddress() {
@@ -25,16 +25,16 @@
 		}
 		
 		function getExplorerBaseUrl() {
-			return "https://bscscan.com/";
+			return "https://etherscan.io/";
 		}
 		
 		async function getContractJSON() {
-			let jsonData = await fetch("bsc_mainnet_contract_abi.json");
+			let jsonData = await fetch("eth_mainnet_contract_abi.json");
 			return await jsonData.json();
 		}
 	</script>
 	
 	<body style="margin:0px;">
-		<iframe style="width:100vw;height:100vh;border:none;" src="base.html" title="Pixel Prismatica NFT Dapp (BSC Mainnet)"></iframe>
+		<iframe style="width:100vw;height:100vh;border:none;" src="base.html" title="Pixel Prismatica NFT DApp (ETH Mainnet)"></iframe>
 	</body>
 </html>
