@@ -750,7 +750,7 @@
 				
 				if(addressBalance < donationValueETH) {
 					DonateResultText.style.color = RED;
-					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + addressBalance;
+					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + addressBalance + " " + getChainCoinName();
 				}
 				else {
 					await contractWriteCall(injectedProvider, "donate", [{value: ethers.utils.parseEther(inputString)}]);
