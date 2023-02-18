@@ -300,7 +300,7 @@
 			else {
 				let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
 				
-				NFTOwnerText.innerHTML = nftOwner;
+				NFTOwnerText.innerHTML = nftOwner + " vs. " + address;
 				
 				if(nftOwner != address) {
 					NFTDisplayResultText.style.color = "#FF0000";
