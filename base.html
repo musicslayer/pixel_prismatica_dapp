@@ -15,15 +15,15 @@
 
 <br/><br/><br/>
 
-<h2><u>Mint</u></h2>
-<p id="ID_MintNextIDText" style='white-space: pre;'>Next ID: ?</p>
-<p id="ID_MintCurrentCostText" style='white-space: pre;'>Current Cost: ?</p>
-<button id="ID_MintButton">Mint</button>
+<h2><u>Minting</u></h2>
+<button id="ID_UpdateMintDataButton">Update Mint Data</button>
+<p id="ID_UpdateMintDataResultText" style='white-space: pre;'>?</p>
+<button id="ID_MintButton">Mint NFT</button>
 <p style='white-space: pre;'></p> <!-- Use this to maintain consistent spacing. -->
 
 <br/><br/><br/>
 
-<h2><u>Configure</u></h2>
+<h2><u>Configuration</u></h2>
 <text>Color Mode:</text><br/>
 <input type="radio" name="color_mode" id="ID_RadioColorMode0" value="0">
 <label for="ID_RadioColorMode0">Rainbow Light</label><br/>
@@ -73,6 +73,7 @@
 <button id="ID_NFTDisplayButton">View</button><br/>
 <p id="ID_NFTOwnerText" style='white-space: pre;'>Owner: ?</p>
 <img id="ID_NFTImage" src=""/>
+<p id="ID_NFTDisplayResultText" style='white-space: pre;'></p>
 
 <br/><br/><br/>
 
@@ -94,8 +95,8 @@
 	const ConnectAddressResultText = document.querySelector('#ID_ConnectAddressResultText');
 	const ConnectAddressResultTable = document.querySelector('#ID_ConnectAddressResultTable');
 	
-	const MintNextIDText = document.querySelector('#ID_MintNextIDText');
-	const MintCurrentCostText = document.querySelector('#ID_MintCurrentCostText');
+	const UpdateMintDataButton = document.querySelector('#ID_UpdateMintDataButton');
+	const UpdateMintDataResultText = document.querySelector('#ID_UpdateMintDataResultText');
 	const MintButton = document.querySelector('#ID_MintButton');
 	
 	const RadioColorMode0 = document.querySelector('#ID_RadioColorMode0');
@@ -122,6 +123,7 @@
 	const NFTDisplayButton = document.querySelector('#ID_NFTDisplayButton');
 	const NFTOwnerText = document.querySelector('#ID_NFTOwnerText');
 	const NFTImage = document.querySelector('#ID_NFTImage');
+	const NFTDisplayResultText = document.querySelector('#ID_NFTDisplayResultText');
 	
 	const DonateInput = document.querySelector('#ID_DonateInput');
 	const DonateButton = document.querySelector('#ID_DonateButton');
@@ -140,6 +142,8 @@
 		
 		contractInterface = new ethers.utils.Interface(await parent.getContractJSON());
 		
+		async_updateMintData();
+		
 		let arr = getInjectedProvider();
 		
 		if(arr[1]) {
@@ -151,9 +155,42 @@
 			})
 		}
 	}
+	
+	async function async_updateWallet() {
+		try {
+			let arr = await getConnectedAddress(false);
+			if(arr[0]) {
+				ConnectAddressResultTable.innerHTML = "";
+			
+				ConnectAddressResultText.style.color = "#FF0000";
+				ConnectAddressResultText.innerHTML = arr[0];
+			}
+			else {
+				ConnectAddressResultText.style.color = "#000000";
+				ConnectAddressResultText.innerHTML = "";
+				
+				ConnectAddressResultTable.innerHTML = "";
+				
+				let T = document.createElement('text');
+				T.innerHTML = "Address Connected: ";
+				
+				let A = document.createElement('a');
+				A.innerHTML = arr[2];
+				A.href = parent.getExplorerBaseUrl() + "address/" + arr[2];
+				A.target = "_blank";
+				
+				ConnectAddressResultTable.appendChild(T);
+				ConnectAddressResultTable.appendChild(A);
+			}
+		}
+		catch(error) {
+			ConnectAddressResultTable.innerHTML = "";
+		
+			ConnectAddressResultText.style.color = "#FF0000";
+			ConnectAddressResultText.innerHTML = getErrorString(error);
+		}
+	}
 
-	
-	
 	ConnectButton.addEventListener('click', () => {
 		async_connectWallet();
 	});
@@ -187,57 +224,102 @@
 		}
 	}
 	
-
-	/*
-	PurchaseTicketsButton.addEventListener('click', () => {
-		async_purchaseTickets();
+	UpdateMintDataButton.addEventListener('click', () => {
+		async_updateMintData();
 	});
-
-	async function async_purchaseTickets() {
+	
+	async function async_updateMintData() {
 		try {
 			let arr = getInjectedProvider();
 			if(arr[0]) {
-				UpdateStatusResultText.style.color = "#FF0000";
-				UpdateStatusResultText.innerHTML = arr[0];
+				UpdateMintDataResultText.style.color = "#FF0000";
+				UpdateMintDataResultText.innerHTML = arr[0];
 				return;
 			}
 			
 			let injectedProvider = arr[1];
 			
-			PurchaseTicketsResultText.style.color = "#000000";
-			PurchaseTicketsResultText.innerHTML = "Ticket purchase in progress...";
+			UpdateMintDataResultText.style.color = "#000000";
+			UpdateMintDataResultText.innerHTML = "Updating Mint Data...";
 			
-			let inputString = TicketsNumberInput.value;
-			let ticketsNumber = Number(inputString);
-			let isLotteryActive = await contractReadCall(injectedProvider, "query_isLotteryActive", []);
+			let promiseArray = [];
+			promiseArray.push(contractReadCall(injectedProvider, "get_totalMints", []));
+			promiseArray.push(contractReadCall(injectedProvider, "get_mintFee", []));
 			
-			if(!isLotteryActive) {
-				PurchaseTicketsResultText.style.color = "#FF0000";
-				PurchaseTicketsResultText.innerHTML = "The lottery is not active. Further tickets cannot be purchased.";
+			let resultArray = await Promise.allSettled(promiseArray);
+			
+			let totalMints = resultArray[0].status == "fulfilled" ? resultArray[0].value : undefined;
+			let mintFee = resultArray[1].status == "fulfilled" ? resultArray[1].value : undefined;
+			
+			const promiseError = "(Cannot Find Data)";
+			
+			let totalMintsText = "Next ID: " + (totalMints ? + (Number(totalMints) + 1) : promiseError);
+			let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
+			
+			UpdateStatusResultText.style.color = "#000000";
+			UpdateStatusResultText.innerHTML = totalMintsText + newline + mintFeeText;
+		}
+		catch(error) {
+			UpdateStatusResultText.style.color = "#FF0000";
+			UpdateStatusResultText.innerHTML = getErrorString(error);
+		}
+	}
+
+	NFTDisplayButton.addEventListener('click', () => {
+		async_displayNFT();
+	});
+
+	async function async_displayNFT() {
+		try {
+			let arr = await getConnectedAddress(true);
+			if(arr[0]) {
+				NFTDisplayResultText.style.color = "#FF0000";
+				NFTDisplayResultText.innerHTML = arr[0];
+				return;
 			}
-			else if(!Number.isInteger(ticketsNumber)) {
-				PurchaseTicketsResultText.style.color = "#FF0000";
-				PurchaseTicketsResultText.innerHTML = "You must enter an integer number of tickets to purchase.";
+			
+			let injectedProvider = arr[1];
+			let address = arr[2];
+			
+			NFTDisplayResultText.style.color = "#000000";
+			NFTDisplayResultText.innerHTML = "Drawing in progress...";
+			
+			let inputString = NFTIDInput.value;
+			let id = Number(inputString);
+			
+			if(!Number.isInteger(id)) {
+				NFTImage.src = "";
+				NFTDisplayResultText.style.color = "#FF0000";
+				NFTDisplayResultText.innerHTML = "You must enter an integer NFT ID.";
 			}
-			else if(ticketsNumber <= 0 || ticketsNumber > 10000) {
-				PurchaseTicketsResultText.style.color = "#FF0000";
-				PurchaseTicketsResultText.innerHTML = "You may only purchase between 1 and 10000 tickets.";
+			else if(id <= 0 || id > 100) {
+				NFTImage.src = "";
+				NFTDisplayResultText.style.color = "#FF0000";
+				NFTDisplayResultText.innerHTML = "NFT ID must be between 1 and 100.";
 			}
 			else {
-				let ticketPrice = await contractReadCall(injectedProvider, "get_ticketPrice", []);
-				let ticketsValue = ethers.BigNumber.from(ticketsNumber).mul(ethers.BigNumber.from(ticketPrice));
-				await contractWriteCall(injectedProvider, "action_purchaseTickets", [{value: ticketsValue}]);
+				let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
 				
-				PurchaseTicketsResultText.style.color = "#000000";
-				PurchaseTicketsResultText.innerHTML = ticketsNumber + " tickets purchased.";
+				if(nftOwner != address) {
+					NFTImage.src = "";
+					NFTDisplayResultText.style.color = "#FF0000";
+					NFTDisplayResultText.innerHTML = "Connected address does not own this NFT.";
+				}
+				else {
+					let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
+					NFTImage.src = imageURI;
+				
+					NFTDisplayResultText.style.color = "#000000";
+					NFTDisplayResultText.innerHTML = "";
+				}
 			}
 		}
 		catch(error) {
-			PurchaseTicketsResultText.style.color = "#FF0000";
-			PurchaseTicketsResultText.innerHTML = getErrorString(error);
+			NFTImage.src = "";
+			NFTDisplayResultText.style.color = "#FF0000";
+			NFTDisplayResultText.innerHTML = getErrorString(error);
 		}
 	}
-	*/
 	
 	DonateButton.addEventListener('click', () => {
 		async_donateButton();
