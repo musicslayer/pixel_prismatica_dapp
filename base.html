@@ -25,8 +25,9 @@
 
 <h2><u>Configuration</u></h2>
 
+<text>ID:</text>
 <input id="ID_ConfigIDInput" type="text" maxlength="9"></input>
-
+<button id="ID_SaveConfigButton">Save Configuration</button><br/>
 <br/>
 
 <text>Color Mode:</text><br/>
@@ -77,13 +78,12 @@
 
 <br/>
 
-<button id="ID_SaveConfigButton">Save Configuration</button><br/>
 <p id="ID_SaveConfigResultText" style='white-space: pre;'></p>
 
 <br/><br/><br/>
 
 <h2><u>View NFT</u></h2>
-<text>ID:</text><br/>
+<text>ID:</text>
 <input id="ID_NFTIDInput" type="text" maxlength="9"></input>
 <button id="ID_NFTDisplayButton">View</button><br/>
 <p id="ID_NFTOwnerText" style='white-space: pre;'>Owner: ?</p>
@@ -331,12 +331,11 @@
 					await contractWriteCall(injectedProvider, "action_applyConfig", [id, colorMode, duration, imageSize]);
 				
 					SaveConfigResultText.style.color = "#000000";
-					SaveConfigResultText.innerHTML = "";
+					SaveConfigResultText.innerHTML = "Save Complete.";
 				}
 			}
 		}
 		catch(error) {
-			NFTImage.src = "";
 			SaveConfigResultText.style.color = "#FF0000";
 			SaveConfigResultText.innerHTML = getErrorString(error);
 		}
@@ -457,7 +456,7 @@
 			}
 			else {
 				let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
-				NFTOwnerText.innerHTML = nftOwner;
+				NFTOwnerText.innerHTML = "Owner: " + nftOwner;
 				
 				if(nftOwner.toLowerCase() != address.toLowerCase()) {
 					NFTDisplayResultText.style.color = "#FF0000";
