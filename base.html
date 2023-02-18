@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 
+
+<style>
+    .column {
+    float: left;
+    
+    }
+	
+	.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+</style>
+
 <h1 id="ID_HeaderText"></h1>
 
 <a href="https://musicslayer.github.io/pixel_prismatica_dapp/" target="_parent">Select a different network.</a>
@@ -7,21 +21,24 @@
 <h2><u>Connection</u></h2>
 
 <text>Connect your wallet to this dapp to interact with it. MetaMask and Trust Wallet DApp Browser are supported.</text><br/><br/>
-<button id="ID_ConnectButton">Connect</button>
 <img src="metamask.png" alt="MetaMask Logo" style="width:32px;height:32px;">
-<img src="trust_wallet.png" alt="Trust Wallet Logo" style="width:32px;height:32px;">
+<img src="trust_wallet.png" alt="Trust Wallet Logo" style="width:32px;height:32px;"><br/><br/>
+<button id="ID_ConnectButton">Connect</button>
+
 <p id="ID_ConnectAddressResultText" style='white-space: pre;'>Address Connected: ?</p>
 <table id="ID_ConnectAddressResultTable"></table>
 
 <br/><br/><br/>
 
 <h2><u>Minting</u></h2>
-<p id="ID_UpdateMintDataResultText" style='white-space: pre;'>?</p>
-<button id="ID_UpdateMintDataButton">Update Mint Data</button><br/>
+<text id="ID_UpdateMintDataResultText">?</text>
+<button id="ID_UpdateMintDataButton">Refresh</button><br/><br/>
 <button id="ID_MintButton">Mint NFT</button><br/>
 
 <br/>
 
+<div class="row">
+<div class="column">
 <text>Color Mode:</text><br/>
 <input type="radio" name="xcolor_mode" id="ID_XRadioColorMode0" value="0" checked="checked">
 <label for="ID_XRadioColorMode0">Rainbow Light</label><br/>
@@ -47,9 +64,13 @@
 <label for="ID_XRadioColorMode10">Yellow</label><br/>
 <input type="radio" name="xcolor_mode" id="ID_XRadioColorMode11" value="11">
 <label for="ID_XRadioColorMode11">Magenta</label><br/>
+</div>
 
-<br/>
+<div class="column"> <!-- For spacing -->
+<text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+</div>
 
+<div class="column">
 <text>Animation Duration:</text><br/>
 <input type="radio" name="xduration" id="ID_XRadioDuration0" value="0" checked="checked">
 <label for="ID_XRadioDuration0">Short</label><br/>
@@ -57,16 +78,22 @@
 <label for="ID_XRadioDuration1">Medium</label><br/>
 <input type="radio" name="xduration" id="ID_XRadioDuration2" value="2">
 <label for="ID_XRadioDuration2">Long</label><br/>
+</div>
 
-<br/>
+<div class="column"> <!-- For spacing -->
+<text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+</div>
 
-<text>Size:</text><br/>
+<div class="column">
+<text>Image Size:</text><br/>
 <input type="radio" name="ximage_size" id="ID_XRadioImageSize0" value="0" checked="checked">
 <label for="ID_XRadioImageSize0">Small</label><br/>
 <input type="radio" name="ximage_size" id="ID_XRadioImageSize1" value="1">
 <label for="ID_XRadioImageSize1">Medium</label><br/>
 <input type="radio" name="ximage_size" id="ID_XRadioImageSize2" value="2">
-<label for="ID_XRadioImageSize2">Large <font color="#800000">(Not displayed in some wallets/marketplaces)</font></label><br/>
+<label for="ID_XRadioImageSize2">Large <font color="#B00000">(Not displayed in some wallets/marketplaces)</font></label><br/>
+</div>
+</div>
 
 <p id="ID_MintResultText" style='white-space: pre;'></p>
 
@@ -79,6 +106,8 @@
 <button id="ID_SaveConfigButton">Save Configuration</button><br/>
 <br/>
 
+<div class="row">
+<div class="column">
 <text>Color Mode:</text><br/>
 <input type="radio" name="color_mode" id="ID_RadioColorMode0" value="0" checked="checked">
 <label for="ID_RadioColorMode0">Rainbow Light</label><br/>
@@ -104,9 +133,13 @@
 <label for="ID_RadioColorMode10">Yellow</label><br/>
 <input type="radio" name="color_mode" id="ID_RadioColorMode11" value="11">
 <label for="ID_RadioColorMode11">Magenta</label><br/>
+</div>
 
-<br/>
+<div class="column"> <!-- For spacing -->
+<text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+</div>
 
+<div class="column">
 <text>Animation Duration:</text><br/>
 <input type="radio" name="duration" id="ID_RadioDuration0" value="0" checked="checked">
 <label for="ID_RadioDuration0">Short</label><br/>
@@ -114,18 +147,22 @@
 <label for="ID_RadioDuration1">Medium</label><br/>
 <input type="radio" name="duration" id="ID_RadioDuration2" value="2">
 <label for="ID_RadioDuration2">Long</label><br/>
+</div>
 
-<br/>
+<div class="column"> <!-- For spacing -->
+<text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+</div>
 
-<text>Size:</text><br/>
+<div class="column">
+<text>Image Size:</text><br/>
 <input type="radio" name="image_size" id="ID_RadioImageSize0" value="0" checked="checked">
 <label for="ID_RadioImageSize0">Small</label><br/>
 <input type="radio" name="image_size" id="ID_RadioImageSize1" value="1">
 <label for="ID_RadioImageSize1">Medium</label><br/>
 <input type="radio" name="image_size" id="ID_RadioImageSize2" value="2">
-<label for="ID_RadioImageSize2">Large <font color="#800000">(Not displayed in some wallets/marketplaces)</font></label><br/>
-
-<br/>
+<label for="ID_RadioImageSize2">Large <font color="#B00000">(Not displayed in some wallets/marketplaces)</font></label><br/>
+</div>
+</div>
 
 <p id="ID_SaveConfigResultText" style='white-space: pre;'></p>
 
