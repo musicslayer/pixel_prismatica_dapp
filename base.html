@@ -772,7 +772,7 @@
 	}
 	
 	async function getAddressBalance(injectedProvider, address) {
-		return await injectedProvider.getBalance(address);
+		return await injectedProvider.request({"method": "eth_getBalance", "params": [address]})
 	}
 	
 	async function eth_request(injectedProvider, method, params) {
