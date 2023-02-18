@@ -94,7 +94,7 @@
 
 <h2><u>Donations</u></h2>
 
-<text>Any donations are appreciated!</text><br/>
+<text>Any donations are appreciated!</text><br/><br/>
 <text id="ID_DonateInputText">Amount (?):</text>
 <input id="ID_DonateInput" type="text" maxlength="9"></input>
 <button id="ID_DonateButton">Donate</button><br/>
@@ -282,7 +282,7 @@
 			let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
 			
 			UpdateMintDataResultText.style.color = "#000000";
-			UpdateMintDataResultText.innerHTML = totalMintsText + newline + mintFeeText;
+			UpdateMintDataResultText.innerHTML = totalMintsText + "\n" + mintFeeText;
 		}
 		catch(error) {
 			UpdateMintDataResultText.style.color = "#FF0000";
@@ -460,7 +460,12 @@
 			}
 			else {
 				let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
-				NFTOwnerText.innerHTML = "Owner: " + nftOwner;
+				if(isZeroAddress(nftOwner)) {
+					NFTOwnerText.innerHTML = "(Unminted)";
+				}
+				else {
+					NFTOwnerText.innerHTML = "Owner: " + nftOwner;
+				}
 				
 				if(nftOwner.toLowerCase() != address.toLowerCase()) {
 					NFTDisplayResultText.style.color = "#FF0000";
@@ -525,6 +530,10 @@
 	}
 			
 	// Util Functions
+	function isZeroAddress(address) {
+		return "0x0000000000000000000000000000000000000000" == address;
+	}
+	
 	async function eth_request(injectedProvider, method, params) {
 		return await injectedProvider.request({"method": method, "params": params});
 	}
