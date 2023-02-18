@@ -311,7 +311,6 @@
 			}
 			else {
 				let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
-				NFTOwnerText.innerHTML = nftOwner;
 				
 				if(nftOwner.toLowerCase() != address.toLowerCase()) {
 					SaveConfigResultText.style.color = "#FF0000";
@@ -331,8 +330,8 @@
 		}
 		catch(error) {
 			NFTImage.src = "";
-			NFTDisplayResultText.style.color = "#FF0000";
-			NFTDisplayResultText.innerHTML = getErrorString(error);
+			SaveConfigResultText.style.color = "#FF0000";
+			SaveConfigResultText.innerHTML = getErrorString(error);
 		}
 	}
 	
