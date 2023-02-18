@@ -68,9 +68,7 @@
 <input type="radio" name="ximage_size" id="ID_XRadioImageSize2" value="2">
 <label for="ID_XRadioImageSize2">Large <font color="#FF0000">(Not displayed in some wallets/marketplaces)</font></label><br/>
 
-<p id="ID_MintResultText" style='white-space: pre;'>?</p>
-
-<p style='white-space: pre;'></p> <!-- Use this to maintain consistent spacing. -->
+<p id="ID_MintResultText" style='white-space: pre;'></p>
 
 <br/><br/><br/>
 
@@ -264,7 +262,7 @@
 				ConnectAddressResultText.innerHTML = arr[0];
 			}
 			else {
-				ConnectAddressResultText.style.color = "#000000";
+				ConnectAddressResultText.style.color = "#FFFF00";
 				ConnectAddressResultText.innerHTML = "";
 				
 				ConnectAddressResultTable.innerHTML = "";
@@ -306,7 +304,7 @@
 			
 			let injectedProvider = arr[1];
 			
-			ConnectAddressResultText.style.color = "#000000";
+			ConnectAddressResultText.style.color = "#FFFF00";
 			ConnectAddressResultText.innerHTML = "Connection in progress...";
 		
 			// Get permission from the user via the wallet application. This will always ask the user, even if they are already connected.
@@ -337,7 +335,7 @@
 			
 			let injectedProvider = arr[1];
 			
-			UpdateMintDataResultText.style.color = "#000000";
+			UpdateMintDataResultText.style.color = "#FFFF00";
 			UpdateMintDataResultText.innerHTML = "Updating Mint Data...";
 			
 			let promiseArray = [];
@@ -354,7 +352,7 @@
 			let totalMintsText = "Next ID: " + (totalMints ? + (Number(totalMints) + 1) : promiseError);
 			let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
 			
-			UpdateMintDataResultText.style.color = "#000000";
+			UpdateMintDataResultText.style.color = "#00FF00";
 			UpdateMintDataResultText.innerHTML = totalMintsText + "   " + mintFeeText;
 		}
 		catch(error) {
@@ -379,7 +377,7 @@
 			let injectedProvider = arr[1];
 			let address = arr[2];
 			
-			MintResultText.style.color = "#000000";
+			MintResultText.style.color = "#FFFF00";
 			MintResultText.innerHTML = "Mint in progress...";
 			
 			let colorMode = getXColorMode();
@@ -388,7 +386,7 @@
 			
 			await contractWriteCall(injectedProvider, "action_mint", [colorMode, duration, imageSize, 0]);
 				
-			MintResultText.style.color = "#000000";
+			MintResultText.style.color = "#00FF00";
 			MintResultText.innerHTML = "Mint Complete.";
 		}
 		catch(error) {
@@ -413,7 +411,7 @@
 			let injectedProvider = arr[1];
 			let address = arr[2];
 			
-			SaveConfigResultText.style.color = "#000000";
+			SaveConfigResultText.style.color = "#FFFF00";
 			SaveConfigResultText.innerHTML = "Save in progress...";
 			
 			let inputString = ConfigIDInput.value;
@@ -441,7 +439,7 @@
 					
 					await contractWriteCall(injectedProvider, "action_applyConfig", [id, colorMode, duration, imageSize]);
 				
-					SaveConfigResultText.style.color = "#000000";
+					SaveConfigResultText.style.color = "#00FF00";
 					SaveConfigResultText.innerHTML = "Save Complete.";
 				}
 			}
@@ -632,8 +630,8 @@
 			
 			NFTOwnerText.innerHTML = "";
 			NFTImage.src = "";
-			NFTDisplayResultText.style.color = "#000000";
-			NFTDisplayResultText.innerHTML = "Drawing in progress...";
+			NFTDisplayResultText.style.color = "#FFFF00";
+			NFTDisplayResultText.innerHTML = "NFT Drawing in progress...";
 			
 			let inputString = NFTIDInput.value;
 			let id = Number(inputString);
@@ -663,7 +661,7 @@
 					let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
 					NFTImage.src = imageURI;
 				
-					NFTDisplayResultText.style.color = "#000000";
+					NFTDisplayResultText.style.color = "#00FF00";
 					NFTDisplayResultText.innerHTML = "";
 				}
 			}
@@ -690,7 +688,7 @@
 			
 			let injectedProvider = arr[1];
 			
-			DonateResultText.style.color = "#000000";
+			DonateResultText.style.color = "#FFFF00";
 			DonateResultText.innerHTML = "Donation in progress...";
 		
 			let inputString = DonateInput.value;
@@ -707,7 +705,7 @@
 			else {
 				await contractWriteCall(injectedProvider, "donate", [{value: ethers.utils.parseEther(inputString)}]);
 				
-				DonateResultText.style.color = "#000000";
+				DonateResultText.style.color = "#00FF00";
 				DonateResultText.innerHTML = "Donation complete.";
 			}
 		}
