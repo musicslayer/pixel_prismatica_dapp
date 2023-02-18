@@ -7,18 +7,69 @@
 <h2><u>Connection</u></h2>
 
 <text>Connect your wallet to this dapp to interact with it. MetaMask and Trust Wallet DApp Browser are supported.</text><br/><br/>
-<img src="metamask.png" alt="MetaMask Logo" style="width:32px;height:32px;">
-<img src="trust_wallet.png" alt="Trust Wallet Logo" style="width:32px;height:32px;"><br/><br/>
 <button id="ID_ConnectButton">Connect</button>
+<img src="metamask.png" alt="MetaMask Logo" style="width:32px;height:32px;">
+<img src="trust_wallet.png" alt="Trust Wallet Logo" style="width:32px;height:32px;">
 <p id="ID_ConnectAddressResultText" style='white-space: pre;'>Address Connected: ?</p>
 <table id="ID_ConnectAddressResultTable"></table>
 
 <br/><br/><br/>
 
 <h2><u>Minting</u></h2>
-<button id="ID_UpdateMintDataButton">Update Mint Data</button>
 <p id="ID_UpdateMintDataResultText" style='white-space: pre;'>?</p>
-<button id="ID_MintButton">Mint NFT</button>
+<button id="ID_UpdateMintDataButton">Update Mint Data</button><br/>
+<button id="ID_MintButton">Mint NFT</button><br/>
+
+<br/>
+
+<text>Color Mode:</text><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode0" value="0" checked="checked">
+<label for="ID_XRadioColorMode0">Rainbow Light</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode1" value="1">
+<label for="ID_XRadioColorMode1">Rainbow Dark</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode2" value="2">
+<label for="ID_XRadioColorMode2">Monochrome</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode3" value="3">
+<label for="ID_XRadioColorMode3">Red</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode4" value="4">
+<label for="ID_XRadioColorMode4">Green</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode5" value="5">
+<label for="ID_XRadioColorMode5">Blue</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode6" value="6">
+<label for="ID_XRadioColorMode6">Green & Blue</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode7" value="7">
+<label for="ID_XRadioColorMode7">Red & Green</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode8" value="8">
+<label for="ID_XRadioColorMode8">Red & Blue</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode9" value="9">
+<label for="ID_XRadioColorMode9">Cyan</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode10" value="10">
+<label for="ID_XRadioColorMode10">Yellow</label><br/>
+<input type="radio" name="xcolor_mode" id="ID_XRadioColorMode11" value="11">
+<label for="ID_XRadioColorMode11">Magenta</label><br/>
+
+<br/>
+
+<text>Animation Duration:</text><br/>
+<input type="radio" name="xduration" id="ID_XRadioDuration0" value="0" checked="checked">
+<label for="ID_XRadioDuration0">Short</label><br/>
+<input type="radio" name="xduration" id="ID_XRadioDuration1" value="1">
+<label for="ID_XRadioDuration1">Medium</label><br/>
+<input type="radio" name="xduration" id="ID_XRadioDuration2" value="2">
+<label for="ID_XRadioDuration2">Long</label><br/>
+
+<br/>
+
+<text>Size:</text><br/>
+<input type="radio" name="ximage_size" id="ID_XRadioImageSize0" value="0" checked="checked">
+<label for="ID_XRadioImageSize0">Small</label><br/>
+<input type="radio" name="ximage_size" id="ID_XRadioImageSize1" value="1">
+<label for="ID_XRadioImageSize1">Medium</label><br/>
+<input type="radio" name="ximage_size" id="ID_XRadioImageSize2" value="2">
+<label for="ID_XRadioImageSize2">Large <font color="#FF0000">(Not displayed in some wallets/marketplaces)</font></label><br/>
+
+<p id="ID_MintResultText" style='white-space: pre;'>?</p>
+
 <p style='white-space: pre;'></p> <!-- Use this to maintain consistent spacing. -->
 
 <br/><br/><br/>
@@ -114,6 +165,28 @@
 	const UpdateMintDataButton = document.querySelector('#ID_UpdateMintDataButton');
 	const UpdateMintDataResultText = document.querySelector('#ID_UpdateMintDataResultText');
 	const MintButton = document.querySelector('#ID_MintButton');
+	const MintResultText = document.querySelector('#ID_MintResultText');
+	
+	const XRadioColorMode0 = document.querySelector('#ID_XRadioColorMode0');
+	const XRadioColorMode1 = document.querySelector('#ID_XRadioColorMode1');
+	const XRadioColorMode2 = document.querySelector('#ID_XRadioColorMode2');
+	const XRadioColorMode3 = document.querySelector('#ID_XRadioColorMode3');
+	const XRadioColorMode4 = document.querySelector('#ID_XRadioColorMode4');
+	const XRadioColorMode5 = document.querySelector('#ID_XRadioColorMode5');
+	const XRadioColorMode6 = document.querySelector('#ID_XRadioColorMode6');
+	const XRadioColorMode7 = document.querySelector('#ID_XRadioColorMode7');
+	const XRadioColorMode8 = document.querySelector('#ID_XRadioColorMode8');
+	const XRadioColorMode9 = document.querySelector('#ID_XRadioColorMode9');
+	const XRadioColorMode10 = document.querySelector('#ID_XRadioColorMode10');
+	const XRadioColorMode11 = document.querySelector('#ID_XRadioColorMode11');
+	
+	const XRadioDuration0 = document.querySelector('#ID_XRadioDuration0');
+	const XRadioDuration1 = document.querySelector('#ID_XRadioDuration1');
+	const XRadioDuration2 = document.querySelector('#ID_XRadioDuration2');
+	
+	const XRadioImageSize0 = document.querySelector('#ID_XRadioImageSize0');
+	const XRadioImageSize1 = document.querySelector('#ID_XRadioImageSize1');
+	const XRadioImageSize2 = document.querySelector('#ID_XRadioImageSize2');
 	
 	const ConfigIDInput = document.querySelector('#ID_ConfigIDInput');
 	
@@ -282,11 +355,45 @@
 			let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
 			
 			UpdateMintDataResultText.style.color = "#000000";
-			UpdateMintDataResultText.innerHTML = totalMintsText + "\n" + mintFeeText;
+			UpdateMintDataResultText.innerHTML = totalMintsText + "   " + mintFeeText;
 		}
 		catch(error) {
 			UpdateMintDataResultText.style.color = "#FF0000";
 			UpdateMintDataResultText.innerHTML = getErrorString(error);
+		}
+	}
+	
+	MintButton.addEventListener('click', () => {
+		async_mint();
+	});
+	
+	async function async_mint() {
+		try {
+			let arr = await getConnectedAddress(true);
+			if(arr[0]) {
+				MintResultText.style.color = "#FF0000";
+				MintResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			let address = arr[2];
+			
+			MintResultText.style.color = "#000000";
+			MintResultText.innerHTML = "Mint in progress...";
+			
+			let colorMode = getXColorMode();
+			let duration = getXDuration();
+			let imageSize = getXImageSize();
+			
+			await contractWriteCall(injectedProvider, "action_mint", [colorMode, duration, imageSize, 0]);
+				
+			MintResultText.style.color = "#000000";
+			MintResultText.innerHTML = "Mint Complete.";
+		}
+		catch(error) {
+			MintResultText.style.color = "#FF0000";
+			MintResultText.innerHTML = getErrorString(error);
 		}
 	}
 	
@@ -343,6 +450,87 @@
 			SaveConfigResultText.style.color = "#FF0000";
 			SaveConfigResultText.innerHTML = getErrorString(error);
 		}
+	}
+	
+	function getXColorMode() {
+		let colorMode;
+		if(XRadioColorMode0.checked) {
+			colorMode = 0;
+		}
+		else if(XRadioColorMode1.checked) {
+			colorMode = 1;
+		}
+		else if(XRadioColorMode2.checked) {
+			colorMode = 2;
+		}
+		else if(XRadioColorMode3.checked) {
+			colorMode = 3;
+		}
+		else if(XRadioColorMode4.checked) {
+			colorMode = 4;
+		}
+		else if(XRadioColorMode5.checked) {
+			colorMode = 5;
+		}
+		else if(XRadioColorMode6.checked) {
+			colorMode = 6;
+		}
+		else if(XRadioColorMode7.checked) {
+			colorMode = 7;
+		}
+		else if(XRadioColorMode8.checked) {
+			colorMode = 8;
+		}
+		else if(XRadioColorMode9.checked) {
+			colorMode = 9;
+		}
+		else if(XRadioColorMode10.checked) {
+			colorMode = 10;
+		}
+		else if(XRadioColorMode11.checked) {
+			colorMode = 11;
+		}
+		else {
+			// Default to 0
+			colorMode = 0;
+		}
+		return colorMode;
+	}
+	
+	function getXDuration() {
+		let duration;
+		if(XRadioDuration0.checked) {
+			duration = 0;
+		}
+		else if(XRadioDuration1.checked) {
+			duration = 1;
+		}
+		else if(XRadioDuration2.checked) {
+			duration = 2;
+		}
+		else {
+			// Default to 1
+			duration = 1;
+		}
+		return duration;
+	}
+	
+	function getXImageSize() {
+		let imageSize;
+		if(XRadioImageSize0.checked) {
+			imageSize = 0;
+		}
+		else if(XRadioImageSize1.checked) {
+			imageSize = 1;
+		}
+		else if(XRadioImageSize2.checked) {
+			imageSize = 2;
+		}
+		else {
+			// Default to 1
+			imageSize = 1;
+		}
+		return imageSize;
 	}
 	
 	function getColorMode() {
