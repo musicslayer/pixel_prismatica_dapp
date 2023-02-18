@@ -747,8 +747,8 @@
 			else {
 				let donationValueETH = ethers.utils.parseEther(inputString);
 				console.error("donationValueETH: " + donationValueETH);
-				console.error("X: " + String(await getAddressBalance(injectedProvider, address)));
-				let addressBalance = ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address)));
+				console.error("X: " + await getAddressBalance(injectedProvider, address));
+				let addressBalance = ethers.utils.parseEther(await getAddressBalance(injectedProvider, address));
 				
 				if(addressBalance < donationValueETH) {
 					DonateResultText.style.color = RED;
@@ -774,7 +774,8 @@
 	}
 	
 	async function getAddressBalance(injectedProvider, address) {
-		return await injectedProvider.request({"method": "eth_getBalance", "params": [address]})
+		// Make sure we convert the hex value to a decimal value before returning.
+		return parseInt(await injectedProvider.request({"method": "eth_getBalance", "params": [address]}), 16)
 	}
 	
 	async function eth_request(injectedProvider, method, params) {
