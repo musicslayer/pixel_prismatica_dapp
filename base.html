@@ -66,7 +66,7 @@
 <input type="radio" name="ximage_size" id="ID_XRadioImageSize1" value="1">
 <label for="ID_XRadioImageSize1">Medium</label><br/>
 <input type="radio" name="ximage_size" id="ID_XRadioImageSize2" value="2">
-<label for="ID_XRadioImageSize2">Large <font color="#FF0000">(Not displayed in some wallets/marketplaces)</font></label><br/>
+<label for="ID_XRadioImageSize2">Large <font color="#800000">(Not displayed in some wallets/marketplaces)</font></label><br/>
 
 <p id="ID_MintResultText" style='white-space: pre;'></p>
 
@@ -123,7 +123,7 @@
 <input type="radio" name="image_size" id="ID_RadioImageSize1" value="1">
 <label for="ID_RadioImageSize1">Medium</label><br/>
 <input type="radio" name="image_size" id="ID_RadioImageSize2" value="2">
-<label for="ID_RadioImageSize2">Large <font color="#FF0000">(Not displayed in some wallets/marketplaces)</font></label><br/>
+<label for="ID_RadioImageSize2">Large <font color="#800000">(Not displayed in some wallets/marketplaces)</font></label><br/>
 
 <br/>
 
@@ -223,6 +223,10 @@
 	const DonateButton = document.querySelector('#ID_DonateButton');
 	const DonateResultText = document.querySelector('#ID_DonateResultText');
 	
+	const RED = "#800000";
+	const GREEN = "#008000";
+	const YELLOW = "#808000";
+	
 	window.addEventListener('load', () => {
 		async_onLoad();
 	});
@@ -258,11 +262,11 @@
 			if(arr[0]) {
 				ConnectAddressResultTable.innerHTML = "";
 			
-				ConnectAddressResultText.style.color = "#FF0000";
+				ConnectAddressResultText.style.color = RED;
 				ConnectAddressResultText.innerHTML = arr[0];
 			}
 			else {
-				ConnectAddressResultText.style.color = "#FFFF00";
+				ConnectAddressResultText.style.color = YELLOW;
 				ConnectAddressResultText.innerHTML = "";
 				
 				ConnectAddressResultTable.innerHTML = "";
@@ -282,7 +286,7 @@
 		catch(error) {
 			ConnectAddressResultTable.innerHTML = "";
 		
-			ConnectAddressResultText.style.color = "#FF0000";
+			ConnectAddressResultText.style.color = red;
 			ConnectAddressResultText.innerHTML = getErrorString(error);
 		}
 	}
@@ -297,14 +301,14 @@
 			if(arr[0]) {
 				ConnectAddressResultTable.innerHTML = "";
 			
-				ConnectAddressResultText.style.color = "#FF0000";
+				ConnectAddressResultText.style.color = RED;
 				ConnectAddressResultText.innerHTML = arr[0];
 				return;
 			}
 			
 			let injectedProvider = arr[1];
 			
-			ConnectAddressResultText.style.color = "#FFFF00";
+			ConnectAddressResultText.style.color = YELLOW;
 			ConnectAddressResultText.innerHTML = "Connection in progress...";
 		
 			// Get permission from the user via the wallet application. This will always ask the user, even if they are already connected.
@@ -315,7 +319,7 @@
 		catch(error) {
 			ConnectAddressResultTable.innerHTML = "";
 		
-			ConnectAddressResultText.style.color = "#FF0000";
+			ConnectAddressResultText.style.color = RED;
 			ConnectAddressResultText.innerHTML = getErrorString(error);
 		}
 	}
@@ -328,14 +332,14 @@
 		try {
 			let arr = getInjectedProvider();
 			if(arr[0]) {
-				UpdateMintDataResultText.style.color = "#FF0000";
+				UpdateMintDataResultText.style.color = RED;
 				UpdateMintDataResultText.innerHTML = arr[0];
 				return;
 			}
 			
 			let injectedProvider = arr[1];
 			
-			UpdateMintDataResultText.style.color = "#FFFF00";
+			UpdateMintDataResultText.style.color = YELLOW;
 			UpdateMintDataResultText.innerHTML = "Updating Mint Data...";
 			
 			let promiseArray = [];
@@ -352,11 +356,11 @@
 			let totalMintsText = "Next ID: " + (totalMints ? + (Number(totalMints) + 1) : promiseError);
 			let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
 			
-			UpdateMintDataResultText.style.color = "#00FF00";
+			UpdateMintDataResultText.style.color = GREEN;
 			UpdateMintDataResultText.innerHTML = totalMintsText + "   " + mintFeeText;
 		}
 		catch(error) {
-			UpdateMintDataResultText.style.color = "#FF0000";
+			UpdateMintDataResultText.style.color = RED;
 			UpdateMintDataResultText.innerHTML = getErrorString(error);
 		}
 	}
@@ -369,7 +373,7 @@
 		try {
 			let arr = await getConnectedAddress(true);
 			if(arr[0]) {
-				MintResultText.style.color = "#FF0000";
+				MintResultText.style.color = RED;
 				MintResultText.innerHTML = arr[0];
 				return;
 			}
@@ -377,7 +381,7 @@
 			let injectedProvider = arr[1];
 			let address = arr[2];
 			
-			MintResultText.style.color = "#FFFF00";
+			MintResultText.style.color = YELLOW;
 			MintResultText.innerHTML = "Mint in progress...";
 			
 			let colorMode = getXColorMode();
@@ -386,11 +390,11 @@
 			
 			await contractWriteCall(injectedProvider, "action_mint", [colorMode, duration, imageSize, 0]);
 				
-			MintResultText.style.color = "#00FF00";
+			MintResultText.style.color = GREEN;
 			MintResultText.innerHTML = "Mint Complete.";
 		}
 		catch(error) {
-			MintResultText.style.color = "#FF0000";
+			MintResultText.style.color = RED;
 			MintResultText.innerHTML = getErrorString(error);
 		}
 	}
@@ -403,7 +407,7 @@
 		try {
 			let arr = await getConnectedAddress(true);
 			if(arr[0]) {
-				SaveConfigResultText.style.color = "#FF0000";
+				SaveConfigResultText.style.color = RED;
 				SaveConfigResultText.innerHTML = arr[0];
 				return;
 			}
@@ -411,25 +415,25 @@
 			let injectedProvider = arr[1];
 			let address = arr[2];
 			
-			SaveConfigResultText.style.color = "#FFFF00";
+			SaveConfigResultText.style.color = YELLOW;
 			SaveConfigResultText.innerHTML = "Save in progress...";
 			
 			let inputString = ConfigIDInput.value;
 			let id = Number(inputString);
 			
 			if(!Number.isInteger(id)) {
-				SaveConfigResultText.style.color = "#FF0000";
+				SaveConfigResultText.style.color = RED;
 				SaveConfigResultText.innerHTML = "You must enter an integer NFT ID.";
 			}
 			else if(id <= 0 || id > 100) {
-				SaveConfigResultText.style.color = "#FF0000";
+				SaveConfigResultText.style.color = RED;
 				SaveConfigResultText.innerHTML = "NFT ID must be between 1 and 100.";
 			}
 			else {
 				let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
 				
 				if(nftOwner.toLowerCase() != address.toLowerCase()) {
-					SaveConfigResultText.style.color = "#FF0000";
+					SaveConfigResultText.style.color = RED;
 					SaveConfigResultText.innerHTML = "Connected address does not own this NFT.";
 				}
 				else {
@@ -439,13 +443,13 @@
 					
 					await contractWriteCall(injectedProvider, "action_applyConfig", [id, colorMode, duration, imageSize]);
 				
-					SaveConfigResultText.style.color = "#00FF00";
+					SaveConfigResultText.style.color = GREEN;
 					SaveConfigResultText.innerHTML = "Save Complete.";
 				}
 			}
 		}
 		catch(error) {
-			SaveConfigResultText.style.color = "#FF0000";
+			SaveConfigResultText.style.color = RED;
 			SaveConfigResultText.innerHTML = getErrorString(error);
 		}
 	}
@@ -620,7 +624,7 @@
 		try {
 			let arr = await getConnectedAddress(true);
 			if(arr[0]) {
-				NFTDisplayResultText.style.color = "#FF0000";
+				NFTDisplayResultText.style.color = RED;
 				NFTDisplayResultText.innerHTML = arr[0];
 				return;
 			}
@@ -630,18 +634,18 @@
 			
 			NFTOwnerText.innerHTML = "";
 			NFTImage.src = "";
-			NFTDisplayResultText.style.color = "#FFFF00";
+			NFTDisplayResultText.style.color = YELLOW;
 			NFTDisplayResultText.innerHTML = "NFT Drawing in progress...";
 			
 			let inputString = NFTIDInput.value;
 			let id = Number(inputString);
 			
 			if(!Number.isInteger(id)) {
-				NFTDisplayResultText.style.color = "#FF0000";
+				NFTDisplayResultText.style.color = RED;
 				NFTDisplayResultText.innerHTML = "You must enter an integer NFT ID.";
 			}
 			else if(id <= 0 || id > 100) {
-				NFTDisplayResultText.style.color = "#FF0000";
+				NFTDisplayResultText.style.color = RED;
 				NFTDisplayResultText.innerHTML = "NFT ID must be between 1 and 100.";
 			}
 			else {
@@ -654,21 +658,21 @@
 				}
 				
 				if(nftOwner.toLowerCase() != address.toLowerCase()) {
-					NFTDisplayResultText.style.color = "#FF0000";
+					NFTDisplayResultText.style.color = RED;
 					NFTDisplayResultText.innerHTML = "Connected address does not own this NFT.";
 				}
 				else {
 					let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
 					NFTImage.src = imageURI;
 				
-					NFTDisplayResultText.style.color = "#00FF00";
+					NFTDisplayResultText.style.color = GREEN;
 					NFTDisplayResultText.innerHTML = "";
 				}
 			}
 		}
 		catch(error) {
 			NFTImage.src = "";
-			NFTDisplayResultText.style.color = "#FF0000";
+			NFTDisplayResultText.style.color = RED;
 			NFTDisplayResultText.innerHTML = getErrorString(error);
 		}
 	}
@@ -681,36 +685,36 @@
 		try {
 			let arr = getInjectedProvider();
 			if(arr[0]) {
-				DonateResultText.style.color = "#FF0000";
+				DonateResultText.style.color = RED;
 				DonateResultText.innerHTML = arr[0];
 				return;
 			}
 			
 			let injectedProvider = arr[1];
 			
-			DonateResultText.style.color = "#FFFF00";
+			DonateResultText.style.color = YELLOW;
 			DonateResultText.innerHTML = "Donation in progress...";
 		
 			let inputString = DonateInput.value;
 			let donationValue = Number(inputString);
 			
 			if(!Number.isFinite(donationValue)) {
-				DonateResultText.style.color = "#FF0000";
+				DonateResultText.style.color = RED;
 				DonateResultText.innerHTML = "You must enter a valid amount to donate.";
 			}
 			else if(donationValue <= 0) {
-				DonateResultText.style.color = "#FF0000";
+				DonateResultText.style.color = RED;
 				DonateResultText.innerHTML = "The donation amount must be greater than 0.";
 			}
 			else {
 				await contractWriteCall(injectedProvider, "donate", [{value: ethers.utils.parseEther(inputString)}]);
 				
-				DonateResultText.style.color = "#00FF00";
+				DonateResultText.style.color = GREEN;
 				DonateResultText.innerHTML = "Donation complete.";
 			}
 		}
 		catch(error) {
-			DonateResultText.style.color = "#FF0000";
+			DonateResultText.style.color = RED;
 			DonateResultText.innerHTML = getErrorString(error);
 		}
 	}
