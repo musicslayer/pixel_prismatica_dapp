@@ -720,7 +720,7 @@
 	
 	async function async_donateButton() {
 		try {
-			let arr = getInjectedProvider();
+			let arr = await getConnectedAddress(true);
 			if(arr[0]) {
 				DonateResultText.style.color = RED;
 				DonateResultText.innerHTML = arr[0];
@@ -728,6 +728,7 @@
 			}
 			
 			let injectedProvider = arr[1];
+			let address = arr[2];
 			
 			DonateResultText.style.color = YELLOW;
 			DonateResultText.innerHTML = "Donation in progress...";
@@ -744,10 +745,17 @@
 				DonateResultText.innerHTML = "The donation amount must be greater than 0.";
 			}
 			else {
-				await contractWriteCall(injectedProvider, "donate", [{value: ethers.utils.parseEther(inputString)}]);
+				let addressBalance = getAddressBalance(injectedProvider, address);
+				if() {
+					DonateResultText.style.color = RED;
+					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + ethers.utils.parseEther(addressBalance);
+				}
+				else {
+					await contractWriteCall(injectedProvider, "donate", [{value: ethers.utils.parseEther(inputString)}]);
 				
-				DonateResultText.style.color = GREEN;
-				DonateResultText.innerHTML = "Donation complete.";
+					DonateResultText.style.color = GREEN;
+					DonateResultText.innerHTML = "Donation complete.";
+				}
 			}
 		}
 		catch(error) {
@@ -759,6 +767,10 @@
 	// Util Functions
 	function isZeroAddress(address) {
 		return "0x0000000000000000000000000000000000000000" == address;
+	}
+	
+	async function getAddressBalance(injectedProvider, address) {
+		return await injectedProvider.getBalance(address);
 	}
 	
 	async function eth_request(injectedProvider, method, params) {
