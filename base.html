@@ -99,7 +99,7 @@
 
 <br/><br/><br/>
 
-<h2><u>Configuration</u></h2>
+<h2><u>Change Configuration</u></h2>
 
 <text>ID:</text>
 <input id="ID_ConfigIDInput" type="text" maxlength="9"></input>
@@ -700,10 +700,13 @@
 				}
 				else {
 					let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
+					let imageName = await contractReadCall(injectedProvider, "createName", [id]);
+					let imageDescription = await contractReadCall(injectedProvider, "createDescription", [id]);
+					
 					NFTImage.src = imageURI;
 				
 					NFTDisplayResultText.style.color = GREEN;
-					NFTDisplayResultText.innerHTML = "";
+					NFTDisplayResultText.innerHTML = imageName + "\n" + imageDescription;
 				}
 			}
 		}
@@ -746,21 +749,14 @@
 			}
 			else {
 				let donationValueETH = ethers.utils.parseEther(inputString);
-				//console.error("donationValueETH: " + donationValueETH);
-				//console.error("X: " + String(await getAddressBalance(injectedProvider, address)));
-				//console.error("E: " + ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address))));
-				//let addressBalance = ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address)));
-				
 				let addressBalance = await getAddressBalance(injectedProvider, address);
-				console.error("donationValueETH: " + donationValueETH);
-				console.error("addressBalance: " + addressBalance);
 				
 				if(ethers.BigNumber.from(addressBalance).lt(ethers.BigNumber.from(donationValueETH))) {
 					DonateResultText.style.color = RED;
 					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + ethers.utils.formatEther(addressBalance) + " " + parent.getChainCoinName();
 				}
 				else {
-					await contractWriteCall(injectedProvider, "donate", [{value: ethers.utils.parseEther(inputString)}]);
+					await contractWriteCall(injectedProvider, "donate", [{value: donationValueETH}]);
 				
 					DonateResultText.style.color = GREEN;
 					DonateResultText.innerHTML = "Donation complete.";
