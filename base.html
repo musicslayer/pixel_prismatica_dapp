@@ -394,7 +394,7 @@
 			let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
 			
 			UpdateMintDataResultText.style.color = GREEN;
-			UpdateMintDataResultText.innerHTML = totalMintsText + "&nbsp;&nbsp;&nbsp;" + mintFeeText;
+			UpdateMintDataResultText.innerHTML = totalMintsText + "&nbsp;&nbsp;&nbsp;" + mintFeeText + "&nbsp;";
 		}
 		catch(error) {
 			UpdateMintDataResultText.style.color = RED;
@@ -748,6 +748,7 @@
 				let donationValueETH = ethers.utils.parseEther(inputString);
 				console.error("donationValueETH: " + donationValueETH);
 				console.error("X: " + String(await getAddressBalance(injectedProvider, address)));
+				console.error("E: " + ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address))));
 				let addressBalance = ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address)));
 				
 				if(addressBalance < donationValueETH) {
