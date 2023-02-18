@@ -745,10 +745,12 @@
 				DonateResultText.innerHTML = "The donation amount must be greater than 0.";
 			}
 			else {
-				let addressBalance = getAddressBalance(injectedProvider, address);
-				if() {
+				let donationValueETH = ethers.utils.parseEther(donationValue);
+				let addressBalance = ethers.utils.parseEther(getAddressBalance(injectedProvider, address));
+				
+				if(addressBalance < donationValueETH) {
 					DonateResultText.style.color = RED;
-					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + ethers.utils.parseEther(addressBalance);
+					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + addressBalance;
 				}
 				else {
 					await contractWriteCall(injectedProvider, "donate", [{value: ethers.utils.parseEther(inputString)}]);
