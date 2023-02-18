@@ -746,6 +746,8 @@
 			}
 			else {
 				let donationValueETH = ethers.utils.parseEther(inputString);
+				console.error("donationValueETH: " + donationValueETH);
+				console.error("X: " + String(await getAddressBalance(injectedProvider, address)));
 				let addressBalance = ethers.utils.parseEther(String(await getAddressBalance(injectedProvider, address)));
 				
 				if(addressBalance < donationValueETH) {
