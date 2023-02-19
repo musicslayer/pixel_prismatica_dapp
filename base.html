@@ -267,6 +267,10 @@
 	
 	const MAX_MINTS = 100;
 	
+	let INPROGRESS_MINT = false;
+	let INPROGRESS_CHANGE = false;
+	let INPROGRESS_DONATE = false;
+	
 	window.addEventListener('load', () => {
 		async_onLoad();
 	});
@@ -432,6 +436,12 @@
 			MintResultText.style.color = YELLOW;
 			MintResultText.innerHTML = "Mint in progress...";
 			
+			if(INPROGRESS_MINT) {
+				return;
+			}
+			
+			INPROGRESS_MINT = true;
+			
 			// When the user clicks mint, update the mint data so the user can see the most recent values.
 			async_updateMintData();
 			
@@ -461,6 +471,8 @@
 		
 		// Regardless of outcome, update the mint data again.
 		async_updateMintData();
+		
+		INPROGRESS_MINT = false;
 	}
 	
 	SaveConfigButton.addEventListener('click', () => {
