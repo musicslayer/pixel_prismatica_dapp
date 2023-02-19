@@ -260,6 +260,7 @@
 	const DonateButton = document.querySelector('#ID_DonateButton');
 	const DonateResultText = document.querySelector('#ID_DonateResultText');
 	
+	const BLACK = "#000000";
 	const RED = "#B00000";
 	const GREEN = "#00B000";
 	const YELLOW = "#B0B000";
@@ -388,13 +389,21 @@
 			let totalMints = resultArray[0].status == "fulfilled" ? resultArray[0].value : undefined;
 			let mintFee = resultArray[1].status == "fulfilled" ? resultArray[1].value : undefined;
 			
-			const promiseError = "(Cannot Find Data)";
-			
-			let totalMintsText = "Next ID: " + (totalMints ? + (Number(totalMints) + 1) : promiseError);
-			let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
-			
-			UpdateMintDataResultText.style.color = GREEN;
-			UpdateMintDataResultText.innerHTML = totalMintsText + "&nbsp;&nbsp;&nbsp;" + mintFeeText + "&nbsp;";
+			if(Number(totalMints) == 3) {
+				let totalMintsText = "Next ID: " + (totalMints ? + (Number(totalMints) + 1) : promiseError);
+				let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
+				
+				UpdateMintDataResultText.style.color = RED;
+				UpdateMintDataResultText.innerHTML = "All NFTs on this chain have been minted.";
+			}
+			else {
+				const promiseError = "(Cannot Find Data)";
+				let totalMintsText = "Next ID: " + (totalMints ? + (Number(totalMints) + 1) : promiseError);
+				let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
+				
+				UpdateMintDataResultText.style.color = BLACK;
+				UpdateMintDataResultText.innerHTML = totalMintsText + "&nbsp;&nbsp;&nbsp;" + mintFeeText + "&nbsp;";
+			}
 		}
 		catch(error) {
 			UpdateMintDataResultText.style.color = RED;
