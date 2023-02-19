@@ -186,6 +186,13 @@
 <button id="ID_DonateButton">Donate</button><br/>
 <p id="ID_DonateResultText" style='white-space: pre;'>&nbsp;</p>
 
+
+
+<h2><u>DEBUG</u></h2>
+<input id="ID_DEBUGIDInput" type="text" maxlength="9"></input>
+<button id="ID_DEBUGDisplayButton">View</button><br/>
+<p id="ID_DEBUGDisplayResultText" style='white-space: pre;'></p>
+
 <script type="module">
 	import { ethers } from "./ethers-5.7.esm.min.js";
 	
@@ -259,6 +266,10 @@
 	const DonateInput = document.querySelector('#ID_DonateInput');
 	const DonateButton = document.querySelector('#ID_DonateButton');
 	const DonateResultText = document.querySelector('#ID_DonateResultText');
+	
+	const DEBUGIDInput = document.querySelector('#ID_DEBUGIDInput');
+	const DEBUGDisplayButton = document.querySelector('#ID_DEBUGDisplayButton');
+	const DEBUGDisplayResultText = document.querySelector('#ID_DEBUGDisplayResultText');
 	
 	const BLACK = "#000000";
 	const RED = "#B00000";
@@ -819,6 +830,50 @@
 		}
 		
 		INPROGRESS_DONATE = false;
+	}
+	
+	DEBUGDisplayButton.addEventListener('click', () => {
+		async_displayDEBUG();
+	});
+
+	async function async_displayDEBUG() {
+		try {
+			let arr = await getConnectedAddress(true);
+			if(arr[0]) {
+				DEBUGDisplayResultText.style.color = RED;
+				DEBUGDisplayResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			let address = arr[2];
+			
+			DEBUGDisplayResultText.style.color = YELLOW;
+			DEBUGDisplayResultText.innerHTML = "DEBUG in progress...";
+			
+			let inputString = DEBUGIDInput.value;
+			let id = Number(inputString);
+			
+			if(!Number.isInteger(id)) {
+				DEBUGDisplayResultText.style.color = RED;
+				DEBUGDisplayResultText.innerHTML = "You must enter an integer NFT ID.";
+			}
+			else if(id <= 0 || id > 100) {
+				DEBUGDisplayResultText.style.color = RED;
+				DEBUGDisplayResultText.innerHTML = "NFT ID must be between 1 and 100.";
+			}
+			else {
+				let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
+				
+				NFTDisplayResultText.style.color = GREEN;
+				NFTDisplayResultText.innerHTML = imageURI;
+			}
+		}
+		catch(error) {
+			NFTImage.src = "";
+			NFTDisplayResultText.style.color = RED;
+			NFTDisplayResultText.innerHTML = getErrorString(error);
+		}
 	}
 			
 	// Util Functions
