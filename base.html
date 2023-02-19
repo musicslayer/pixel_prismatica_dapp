@@ -865,14 +865,13 @@
 			else {
 				let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
 				
-				NFTDisplayResultText.style.color = GREEN;
-				NFTDisplayResultText.innerHTML = imageURI;
+				DEBUGDisplayResultText.style.color = GREEN;
+				DEBUGDisplayResultText.innerHTML = imageURI;
 			}
 		}
 		catch(error) {
-			NFTImage.src = "";
-			NFTDisplayResultText.style.color = RED;
-			NFTDisplayResultText.innerHTML = getErrorString(error);
+			DEBUGDisplayResultText.style.color = RED;
+			DEBUGDisplayResultText.innerHTML = getErrorString(error);
 		}
 	}
 			
