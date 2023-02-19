@@ -91,7 +91,7 @@
 <input type="radio" name="ximage_size" id="ID_XRadioImageSize1" value="1" checked="checked">
 <label for="ID_XRadioImageSize1">Medium</label><br/>
 <input type="radio" name="ximage_size" id="ID_XRadioImageSize2" value="2">
-<label for="ID_XRadioImageSize2">Large <font color="#B00000">(Not displayed in some wallets/marketplaces)</font></label><br/>
+<label for="ID_XRadioImageSize2">Large <font color="#B00000">(Not displayable in some wallets/marketplaces)</font></label><br/>
 </div>
 </div>
 
@@ -160,7 +160,7 @@
 <input type="radio" name="image_size" id="ID_RadioImageSize1" value="1" checked="checked">
 <label for="ID_RadioImageSize1">Medium</label><br/>
 <input type="radio" name="image_size" id="ID_RadioImageSize2" value="2">
-<label for="ID_RadioImageSize2">Large <font color="#B00000">(Not displayed in some wallets/marketplaces)</font></label><br/>
+<label for="ID_RadioImageSize2">Large <font color="#B00000">(Not displayable in some wallets/marketplaces)</font></label><br/>
 </div>
 </div>
 
@@ -526,7 +526,7 @@
 					await contractWriteCall(injectedProvider, "action_applyConfig", [id, colorMode, duration, imageSize]);
 				
 					SaveConfigResultText.style.color = GREEN;
-					SaveConfigResultText.innerHTML = "Save Complete.";
+					SaveConfigResultText.innerHTML = "Save Complete.\nSome NFT wallets/marketplaces require you to manually refresh the metadata before any changes are reflected.";
 				}
 			}
 		}
