@@ -391,7 +391,6 @@
 			let totalMints = resultArray[0].status == "fulfilled" ? resultArray[0].value : undefined;
 			let mintFee = resultArray[1].status == "fulfilled" ? resultArray[1].value : undefined;
 			
-			totalMints = undefined;
 			if(Number(totalMints) == MAX_MINTS) {
 				let totalMintsText = "Next ID: " + (totalMints ? + (Number(totalMints) + 1) : promiseError);
 				let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
@@ -436,15 +435,24 @@
 			// When the user clicks mint, update the mint data so the user can see the most recent values.
 			async_updateMintData();
 			
-			let colorMode = getXColorMode();
-			let duration = getXDuration();
-			let imageSize = getXImageSize();
-			let mintFee = await contractReadCall(injectedProvider, "get_mintFee", [])
+			let totalMints = await contractReadCall(injectedProvider, "get_totalMints", []);
 			
-			await contractWriteCall(injectedProvider, "action_mint", [colorMode, duration, imageSize, 0, {value: mintFee}]);
+			if(Number(totalMints) == MAX_MINTS) {
+				MintResultText.style.color = RED;
+				MintResultText.innerHTML = "There are no more NFTs available to mint on this chain.";
+			}
+			else {
+				let colorMode = getXColorMode();
+				let duration = getXDuration();
+				let imageSize = getXImageSize();
+				let data = 0; // This value is not important.
 				
-			MintResultText.style.color = GREEN;
-			MintResultText.innerHTML = "Mint Complete.";
+				let mintFee = await contractReadCall(injectedProvider, "get_mintFee", []);
+				await contractWriteCall(injectedProvider, "action_mint", [colorMode, duration, imageSize, data, {value: mintFee}]);
+					
+				MintResultText.style.color = GREEN;
+				MintResultText.innerHTML = "Mint Complete.";
+			}
 		}
 		catch(error) {
 			MintResultText.style.color = RED;
