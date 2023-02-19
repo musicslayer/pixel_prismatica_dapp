@@ -265,7 +265,7 @@
 	const GREEN = "#00B000";
 	const YELLOW = "#B0B000";
 	
-	const MAX_MINTS = 3;
+	const MAX_MINTS = 100;
 	
 	window.addEventListener('load', () => {
 		async_onLoad();
@@ -396,7 +396,7 @@
 				let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
 				
 				UpdateMintDataResultText.style.color = RED;
-				UpdateMintDataResultText.innerHTML = "All NFTs on this chain have been minted.";
+				UpdateMintDataResultText.innerHTML = "All 100 NFTs on this network have been minted.";
 			}
 			else {
 				const promiseError = "(Cannot Find Data)";
@@ -439,7 +439,7 @@
 			
 			if(Number(totalMints) == MAX_MINTS) {
 				MintResultText.style.color = RED;
-				MintResultText.innerHTML = "There are no more NFTs available to mint on this chain.";
+				MintResultText.innerHTML = "There are no more NFTs available to mint on this network.";
 			}
 			else {
 				let colorMode = getXColorMode();
