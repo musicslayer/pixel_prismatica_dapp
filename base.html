@@ -421,11 +421,15 @@
 			MintResultText.style.color = YELLOW;
 			MintResultText.innerHTML = "Mint in progress...";
 			
+			// When the user clicks mint, update the mint data so the user can see the most recent values.
+			async_updateMintData();
+			
 			let colorMode = getXColorMode();
 			let duration = getXDuration();
 			let imageSize = getXImageSize();
+			let mintFee = await contractReadCall(injectedProvider, "get_mintFee", [])
 			
-			await contractWriteCall(injectedProvider, "action_mint", [colorMode, duration, imageSize, 0]);
+			await contractWriteCall(injectedProvider, "action_mint", [colorMode, duration, imageSize, 0, {value: mintFee}]);
 				
 			MintResultText.style.color = GREEN;
 			MintResultText.innerHTML = "Mint Complete.";
