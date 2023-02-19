@@ -268,7 +268,7 @@
 	const MAX_MINTS = 100;
 	
 	let INPROGRESS_MINT = false;
-	let INPROGRESS_CHANGE = false;
+	let INPROGRESS_SAVE = false;
 	let INPROGRESS_DONATE = false;
 	
 	window.addEventListener('load', () => {
@@ -494,6 +494,12 @@
 			SaveConfigResultText.style.color = YELLOW;
 			SaveConfigResultText.innerHTML = "Save in progress...";
 			
+			if(INPROGRESS_SAVE) {
+				return;
+			}
+			
+			INPROGRESS_SAVE = true;
+			
 			let inputString = ConfigIDInput.value;
 			let id = Number(inputString);
 			
@@ -528,6 +534,8 @@
 			SaveConfigResultText.style.color = RED;
 			SaveConfigResultText.innerHTML = getErrorString(error);
 		}
+		
+		INPROGRESS_SAVE = false;
 	}
 	
 	function getXColorMode() {
@@ -774,6 +782,12 @@
 			
 			DonateResultText.style.color = YELLOW;
 			DonateResultText.innerHTML = "Donation in progress...";
+			
+			if(INPROGRESS_DONATE) {
+				return;
+			}
+			
+			INPROGRESS_DONATE = true;
 		
 			let inputString = DonateInput.value;
 			let donationValue = Number(inputString);
@@ -806,6 +820,8 @@
 			DonateResultText.style.color = RED;
 			DonateResultText.innerHTML = getErrorString(error);
 		}
+		
+		INPROGRESS_DONATE = false;
 	}
 			
 	// Util Functions
