@@ -265,6 +265,8 @@
 	const GREEN = "#00B000";
 	const YELLOW = "#B0B000";
 	
+	const MAX_MINTS = 3;
+	
 	window.addEventListener('load', () => {
 		async_onLoad();
 	});
@@ -389,7 +391,8 @@
 			let totalMints = resultArray[0].status == "fulfilled" ? resultArray[0].value : undefined;
 			let mintFee = resultArray[1].status == "fulfilled" ? resultArray[1].value : undefined;
 			
-			if(Number(totalMints) == 3) {
+			totalMints = undefined;
+			if(Number(totalMints) == MAX_MINTS) {
 				let totalMintsText = "Next ID: " + (totalMints ? + (Number(totalMints) + 1) : promiseError);
 				let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
 				
