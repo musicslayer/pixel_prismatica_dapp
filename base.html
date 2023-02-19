@@ -396,16 +396,13 @@
 			let mintFee = resultArray[1].status == "fulfilled" ? resultArray[1].value : undefined;
 			
 			if(Number(totalMints) == MAX_MINTS) {
-				let totalMintsText = "Next ID: " + (totalMints ? + (Number(totalMints) + 1) : promiseError);
-				let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
-				
 				UpdateMintDataResultText.style.color = RED;
 				UpdateMintDataResultText.innerHTML = "All 100 NFTs on this network have been minted.";
 			}
 			else {
 				const promiseError = "(Cannot Find Data)";
-				let totalMintsText = "Next ID: " + (totalMints ? + (Number(totalMints) + 1) : promiseError);
-				let mintFeeText = "Next Mint Fee: " + (mintFee ? + ethers.utils.formatEther(mintFee) : promiseError);
+				let totalMintsText = "Next ID: " + (totalMints ? (Number(totalMints) + 1) : promiseError);
+				let mintFeeText = "Next Mint Fee: " + (mintFee ? ethers.utils.formatEther(mintFee) + " " + parent.getChainCoinName() : promiseError);
 				
 				UpdateMintDataResultText.style.color = BLACK;
 				UpdateMintDataResultText.innerHTML = totalMintsText + "&nbsp;&nbsp;&nbsp;" + mintFeeText + "&nbsp;";
