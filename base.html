@@ -78,6 +78,8 @@
 <label for="ID_XRadioDuration1">Medium</label><br/>
 <input type="radio" name="xduration" id="ID_XRadioDuration2" value="2">
 <label for="ID_XRadioDuration2">Long</label><br/>
+<input type="radio" name="xduration" id="ID_XRadioDuration3" value="2">
+<label for="ID_XRadioDuration3">Turn Off Animation</label><br/>
 </div>
 
 <div class="column"> <!-- For spacing -->
@@ -147,6 +149,8 @@
 <label for="ID_RadioDuration1">Medium</label><br/>
 <input type="radio" name="duration" id="ID_RadioDuration2" value="2">
 <label for="ID_RadioDuration2">Long</label><br/>
+<input type="radio" name="duration" id="ID_RadioDuration3" value="2">
+<label for="ID_RadioDuration3">Turn Off Animation</label><br/>
 </div>
 
 <div class="column"> <!-- For spacing -->
@@ -186,13 +190,6 @@
 <button id="ID_DonateButton">Donate</button><br/>
 <p id="ID_DonateResultText" style='white-space: pre;'>&nbsp;</p>
 
-
-
-<h2><u>DEBUG</u></h2>
-<input id="ID_DEBUGIDInput" type="text" maxlength="9"></input>
-<button id="ID_DEBUGDisplayButton">View</button><br/>
-<p id="ID_DEBUGDisplayResultText" style='white-space: pre;'></p>
-
 <script type="module">
 	import { ethers } from "./ethers-5.7.esm.min.js";
 	
@@ -225,6 +222,7 @@
 	const XRadioDuration0 = document.querySelector('#ID_XRadioDuration0');
 	const XRadioDuration1 = document.querySelector('#ID_XRadioDuration1');
 	const XRadioDuration2 = document.querySelector('#ID_XRadioDuration2');
+	const XRadioDuration3 = document.querySelector('#ID_XRadioDuration3');
 	
 	const XRadioImageSize0 = document.querySelector('#ID_XRadioImageSize0');
 	const XRadioImageSize1 = document.querySelector('#ID_XRadioImageSize1');
@@ -248,6 +246,7 @@
 	const RadioDuration0 = document.querySelector('#ID_RadioDuration0');
 	const RadioDuration1 = document.querySelector('#ID_RadioDuration1');
 	const RadioDuration2 = document.querySelector('#ID_RadioDuration2');
+	const RadioDuration3 = document.querySelector('#ID_RadioDuration3');
 	
 	const RadioImageSize0 = document.querySelector('#ID_RadioImageSize0');
 	const RadioImageSize1 = document.querySelector('#ID_RadioImageSize1');
@@ -266,10 +265,6 @@
 	const DonateInput = document.querySelector('#ID_DonateInput');
 	const DonateButton = document.querySelector('#ID_DonateButton');
 	const DonateResultText = document.querySelector('#ID_DonateResultText');
-	
-	const DEBUGIDInput = document.querySelector('#ID_DEBUGIDInput');
-	const DEBUGDisplayButton = document.querySelector('#ID_DEBUGDisplayButton');
-	const DEBUGDisplayResultText = document.querySelector('#ID_DEBUGDisplayResultText');
 	
 	const BLACK = "#000000";
 	const RED = "#B00000";
@@ -460,16 +455,24 @@
 				MintResultText.innerHTML = "There are no more NFTs available to mint on this network.";
 			}
 			else {
-				let colorMode = getXColorMode();
-				let duration = getXDuration();
-				let imageSize = getXImageSize();
-				let data = 0; // This value is not important.
-				
 				let mintFee = await contractReadCall(injectedProvider, "get_mintFee", []);
-				await contractWriteCall(injectedProvider, "action_mint", [colorMode, duration, imageSize, data, {value: mintFee}]);
+				let addressBalance = await getAddressBalance(injectedProvider, address);
+				
+				if(ethers.BigNumber.from(addressBalance).lt(ethers.BigNumber.from(mintFee))) {
+					MintResultText.style.color = RED;
+					MintResultText.innerHTML = "Connected address has insufficient balance to mint.\nBalance = " + ethers.utils.formatEther(addressBalance) + " " + parent.getChainCoinName();
+				}
+				else {
+					let colorMode = getXColorMode();
+					let duration = getXDuration();
+					let imageSize = getXImageSize();
+					let data = 0; // This value is not important.
 					
-				MintResultText.style.color = GREEN;
-				MintResultText.innerHTML = "Mint Complete.";
+					await contractWriteCall(injectedProvider, "action_mint", [colorMode, duration, imageSize, data, {value: mintFee}]);
+						
+					MintResultText.style.color = GREEN;
+					MintResultText.innerHTML = "Mint Complete.";
+				}
 			}
 		}
 		catch(error) {
@@ -602,6 +605,9 @@
 		else if(XRadioDuration2.checked) {
 			duration = 2;
 		}
+		else if(XRadioDuration3.checked) {
+			duration = 3;
+		}
 		else {
 			// Default to 1
 			duration = 1;
@@ -683,6 +689,9 @@
 		else if(RadioDuration2.checked) {
 			duration = 2;
 		}
+		else if(RadioDuration3.checked) {
+			duration = 3;
+		}
 		else {
 			// Default to 1
 			duration = 1;
@@ -754,9 +763,9 @@
 					NFTDisplayResultText.innerHTML = "Connected address does not own this NFT.";
 				}
 				else {
+					let imageName = await contractReadCall(injectedProvider, "get_name", [id]);
+					let imageDescription = await contractReadCall(injectedProvider, "get_description", [id]);
 					let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
-					let imageName = await contractReadCall(injectedProvider, "createName", [id]);
-					let imageDescription = await contractReadCall(injectedProvider, "createDescription", [id]);
 					
 					NFTImage.src = imageURI;
 				
@@ -830,49 +839,6 @@
 		}
 		
 		INPROGRESS_DONATE = false;
-	}
-	
-	DEBUGDisplayButton.addEventListener('click', () => {
-		async_displayDEBUG();
-	});
-
-	async function async_displayDEBUG() {
-		try {
-			let arr = await getConnectedAddress(true);
-			if(arr[0]) {
-				DEBUGDisplayResultText.style.color = RED;
-				DEBUGDisplayResultText.innerHTML = arr[0];
-				return;
-			}
-			
-			let injectedProvider = arr[1];
-			let address = arr[2];
-			
-			DEBUGDisplayResultText.style.color = YELLOW;
-			DEBUGDisplayResultText.innerHTML = "DEBUG in progress...";
-			
-			let inputString = DEBUGIDInput.value;
-			let id = Number(inputString);
-			
-			if(!Number.isInteger(id)) {
-				DEBUGDisplayResultText.style.color = RED;
-				DEBUGDisplayResultText.innerHTML = "You must enter an integer NFT ID.";
-			}
-			else if(id <= 0 || id > 100) {
-				DEBUGDisplayResultText.style.color = RED;
-				DEBUGDisplayResultText.innerHTML = "NFT ID must be between 1 and 100.";
-			}
-			else {
-				let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
-				
-				DEBUGDisplayResultText.style.color = GREEN;
-				DEBUGDisplayResultText.innerHTML = imageURI;
-			}
-		}
-		catch(error) {
-			DEBUGDisplayResultText.style.color = RED;
-			DEBUGDisplayResultText.innerHTML = getErrorString(error);
-		}
 	}
 			
 	// Util Functions
