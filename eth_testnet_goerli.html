@@ -13,7 +13,7 @@
 		}
 		
 		function getChainDisplayName() {
-			return "ETH Goerli Testnet";
+			return "Ethereum Testnet Goerli";
 		}
 		
 		function getChainID() {
@@ -21,7 +21,7 @@
 		}
 		
 		function getContractAddress() {
-			return "0x2bb645B69bC96644EBaDb91a80674f0ad45B116E";
+			return "0x92d778485365F18F4209509BC1723d27a691f7ed";
 		}
 		
 		function getExplorerBaseUrl() {
@@ -29,7 +29,7 @@
 		}
 		
 		async function getContractJSON() {
-			let jsonData = await fetch("eth_testnet_contract_abi.json");
+			let jsonData = await fetch("eth_testnet_goerli_contract_abi.json");
 			return await jsonData.json();
 		}
 	</script>
