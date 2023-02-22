@@ -301,7 +301,10 @@
 		async_updateWallet();
 		async_updateMintData();
 		
-		if(await isMobileWallet()) {
+		let isMobileWallet = await isMobileWallet();
+		console.error("TF = " + isMobileWallet);
+		
+		if(isMobileWallet) {
 			ConnectButton.style.display = "none";
 		}
 		
