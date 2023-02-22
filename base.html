@@ -301,9 +301,9 @@
 		async_updateWallet();
 		async_updateMintData();
 		
-		//if(isMobileWallet) {
+		if(isMobileWallet) {
 			ConnectButton.style.display = "none";
-		//}
+		}
 		
 		let arr = getInjectedProvider();
 		
@@ -861,6 +861,21 @@
 	}
 			
 	// Util Functions
+	function isMobileWallet() {
+		// For MetaMask and Trust Wallet apps, their browsers control wallet connection, and they do not provide the "wallet_requestPermissions" method
+		// We call something that we know will error, and use the exact error to see if "wallet_requestPermissions" exists or not.
+		try {
+			await eth_request(injectedProvider, "wallet_requestPermissions", [{"eth_accounts": {1}}]);
+		}
+		catch(error) {
+			//errorString = "Unknown Error.\n\n" + error;
+			//injectedProvider = undefined;
+			logError(error);
+		}
+		
+		return true;
+	}
+	
 	function isZeroAddress(address) {
 		return "0x0000000000000000000000000000000000000000" == address;
 	}
