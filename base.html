@@ -279,6 +279,7 @@
 	
 	const MAX_MINTS = 100;
 	
+	let INPROGRESS_CONNECT = false;
 	let INPROGRESS_MINT = false;
 	let INPROGRESS_SAVE = false;
 	let INPROGRESS_DONATE = false;
@@ -366,6 +367,12 @@
 			
 			ConnectAddressResultText.style.color = YELLOW;
 			ConnectAddressResultText.innerHTML = "Connection in progress...";
+			
+			if(INPROGRESS_CONNECT) {
+				return;
+			}
+			
+			INPROGRESS_CONNECT = true;
 		
 			// Get permission from the user via the wallet application. This will always ask the user, even if they are already connected.
 			await eth_request(injectedProvider, "wallet_requestPermissions", [{"eth_accounts": {}}]);
@@ -378,6 +385,8 @@
 			ConnectAddressResultText.style.color = RED;
 			ConnectAddressResultText.innerHTML = getErrorString(error);
 		}
+		
+		INPROGRESS_CONNECT = false;
 	}
 	
 	UpdateMintDataButton.addEventListener('click', () => {
