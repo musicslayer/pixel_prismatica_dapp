@@ -97,7 +97,7 @@
 <input type="radio" name="ximage_size" id="ID_XRadioImageSize1" value="1" checked="checked">
 <label for="ID_XRadioImageSize1">Medium</label><br/>
 <input type="radio" name="ximage_size" id="ID_XRadioImageSize2" value="2">
-<label for="ID_XRadioImageSize2">Large <font color="#B00000">(Not displayable in some wallets/marketplaces)</font></label><br/>
+<label for="ID_XRadioImageSize2">Large <font color="#B00000">(Does not display everywhere)</font></label><br/>
 </div>
 </div>
 
@@ -170,7 +170,7 @@
 <input type="radio" name="image_size" id="ID_RadioImageSize1" value="1" checked="checked">
 <label for="ID_RadioImageSize1">Medium</label><br/>
 <input type="radio" name="image_size" id="ID_RadioImageSize2" value="2">
-<label for="ID_RadioImageSize2">Large <font color="#B00000">(Not displayable in some wallets/marketplaces)</font></label><br/>
+<label for="ID_RadioImageSize2">Large <font color="#B00000">(Does not display everywhere)</font></label><br/>
 </div>
 </div>
 
@@ -893,8 +893,7 @@
 	}
 	
 	async function contractReadCall(injectedProvider, method, args) {
-		//const provider = new ethers.providers.Web3Provider(injectedProvider, new ethers.providers.getNetwork(parent.getChainID()));
-		const provider = new ethers.providers.Web3Provider(ethers.providers.getDefaultProvider(), new ethers.providers.getNetwork(parent.getChainID()));
+		const provider = new ethers.providers.Web3Provider(injectedProvider, new ethers.providers.getNetwork(parent.getChainID()));
 		const contractRead = new ethers.Contract(parent.getContractAddress(), contractInterface, provider);
 		return await contractRead[method](...args);
 	}
