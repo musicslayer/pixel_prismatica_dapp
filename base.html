@@ -25,7 +25,7 @@
 <text>Connect your wallet to this dapp to interact with it. MetaMask and Trust Wallet DApp Browser are supported.</text><br/><br/>
 <img src="metamask.png" alt="MetaMask Logo" style="width:32px;height:32px;">
 <img src="trust_wallet.png" alt="Trust Wallet Logo" style="width:32px;height:32px;"><br/><br/>
-<button id="ID_ConnectButton">Connect</button>
+<button id="ID_ConnectButton" style="display:none">Connect</button>
 
 <p id="ID_ConnectAddressResultText" style='white-space: pre;'>Address Connected: ?</p>
 <table id="ID_ConnectAddressResultTable"></table>
@@ -306,8 +306,8 @@
 		if(arr[1]) {
 			let injectedProvider = arr[1];
 			
-			if(await isMobileWallet(injectedProvider)) {
-				ConnectButton.style.display = "none";
+			if(!(await isMobileWallet(injectedProvider))) {
+				ConnectButton.style.display = "inline";
 			}
 		
 			injectedProvider.on('chainChanged', () => {
