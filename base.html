@@ -869,7 +869,7 @@
 	async function isMobileWallet(injectedProvider) {
 		// For MetaMask and Trust Wallet apps, their browsers control wallet connection, and they do not provide the "wallet_requestPermissions" method
 		// We call something that we know will error, and use the exact error to see if "wallet_requestPermissions" exists or not.
-		let code = undefined;
+		let _code = undefined;
 		
 		try {
 			await eth_request(injectedProvider, "wallet_requestPermissions", [{"eth_accounts": []}]);
