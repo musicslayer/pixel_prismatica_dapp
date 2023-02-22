@@ -786,7 +786,7 @@
 				else {
 					let imageName = await contractReadCall(injectedProvider, "get_name", [id]);
 					let imageDescription = await contractReadCall(injectedProvider, "get_description", [id]);
-					let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id, {gasLimit: "40000000"}]);
+					let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id, {gasLimit: "4000000000"}]);
 					
 					NFTImage.src = imageURI;
 				
