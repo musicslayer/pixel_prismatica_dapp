@@ -301,6 +301,10 @@
 		async_updateWallet();
 		async_updateMintData();
 		
+		//if(isMobileWallet) {
+			ConnectButton.style.visibility = "hidden";
+		//}
+		
 		let arr = getInjectedProvider();
 		
 		if(arr[1]) {
