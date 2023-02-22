@@ -305,6 +305,10 @@
 		
 		if(arr[1]) {
 			let injectedProvider = arr[1];
+			
+			if(await isMobileWallet(injectedProvider)) {
+				ConnectButton.style.display = "none";
+			}
 		
 			injectedProvider.on('chainChanged', () => {
 				window.location.reload();
@@ -312,13 +316,6 @@
 			injectedProvider.on('accountsChanged', () => {
 				async_updateWallet();
 			})
-			
-			let _isMobileWallet = await isMobileWallet(injectedProvider);
-			console.error("TF = " + _isMobileWallet);
-		
-			if(_isMobileWallet) {
-				ConnectButton.style.display = "none";
-			}
 		}
 	}
 	
@@ -867,8 +864,8 @@
 			
 	// Util Functions
 	async function isMobileWallet(injectedProvider) {
-		// For MetaMask and Trust Wallet apps, their browsers control wallet connection, and they do not provide the "wallet_requestPermissions" method
-		// We call something that we know will error, and use the exact error to see if "wallet_requestPermissions" exists or not.
+		// For MetaMask and Trust Wallet apps, their browsers control wallet connection and they do not provide the "wallet_requestPermissions" method
+		// We call something that we know will error, and use the error code to see if "wallet_requestPermissions" exists or not.
 		let _code = undefined;
 		
 		try {
@@ -876,13 +873,9 @@
 		}
 		catch(error) {
 			_code = error.code;
-			//console.error("ERROR M");
-			//console.error(error);
-			//console.error("ERROR C");
-			//console.error(error.code);
 		}
 		
-		return _code == -32602;
+		return _code != -32602;
 	}
 	
 	function isZeroAddress(address) {
