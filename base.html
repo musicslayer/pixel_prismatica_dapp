@@ -875,7 +875,7 @@
 			await eth_request(injectedProvider, "wallet_requestPermissions", [{"eth_accounts": []}]);
 		}
 		catch(error) {
-			code = error.code;
+			_code = error.code;
 			//console.error("ERROR M");
 			//console.error(error);
 			//console.error("ERROR C");
