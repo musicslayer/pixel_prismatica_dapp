@@ -893,7 +893,8 @@
 	}
 	
 	async function contractReadCall(injectedProvider, method, args) {
-		const provider = new ethers.providers.Web3Provider(injectedProvider, new ethers.providers.getNetwork(parent.getChainID()));
+		//const provider = new ethers.providers.Web3Provider(injectedProvider, new ethers.providers.getNetwork(parent.getChainID()));
+		const provider = new ethers.providers.Web3Provider(ethers.providers.getDefaultProvider(), new ethers.providers.getNetwork(parent.getChainID()));
 		const contractRead = new ethers.Contract(parent.getContractAddress(), contractInterface, provider);
 		return await contractRead[method](...args);
 	}
