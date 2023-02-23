@@ -860,7 +860,7 @@
 					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + ethers.utils.formatEther(addressBalance) + " " + parent.getChainCoinName();
 				}
 				else {
-					await contractWriteCall(injectedProvider, "donate", [{value: donationValueETH}]);
+					await contractWriteCall(injectedProvider, "donate", [donationValueETH, {value: donationValueETH}]);
 				
 					DonateResultText.style.color = GREEN;
 					DonateResultText.innerHTML = "Donation complete.";
