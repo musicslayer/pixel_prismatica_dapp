@@ -866,6 +866,19 @@
 	// Util Functions
 	async function isMobileWallet(injectedProvider) {
 		// For MetaMask and Trust Wallet apps, their browsers control wallet connection and they do not provide the "wallet_requestPermissions" method
+		try {
+			await eth_request(injectedProvider, "wallet_getPermissions", [{"eth_accounts": {}}]);
+		}
+		catch(error) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/*
+	async function isMobileWallet(injectedProvider) {
+		// For MetaMask and Trust Wallet apps, their browsers control wallet connection and they do not provide the "wallet_requestPermissions" method
 		// We call something that we know will error, and use the error code to see if "wallet_requestPermissions" exists or not.
 		let _code = undefined;
 		
@@ -878,6 +891,7 @@
 		
 		return _code != -32602;
 	}
+	*/
 	
 	function isZeroAddress(address) {
 		return "0x0000000000000000000000000000000000000000" == address;
