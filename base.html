@@ -364,7 +364,7 @@
 		try {
 			let arr = getInjectedProvider();
 			if(arr[0]) {
-				ConnectAddressResultTable.innerHTML = "";
+				//ConnectAddressResultTable.innerHTML = "";
 			
 				ConnectAddressResultText.style.color = RED;
 				ConnectAddressResultText.innerHTML = arr[0];
@@ -388,7 +388,7 @@
 			async_updateWallet();
 		}
 		catch(error) {
-			ConnectAddressResultTable.innerHTML = "";
+			//ConnectAddressResultTable.innerHTML = "";
 		
 			ConnectAddressResultText.style.color = RED;
 			ConnectAddressResultText.innerHTML = getErrorString(error);
