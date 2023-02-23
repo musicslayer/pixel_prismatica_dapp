@@ -762,7 +762,7 @@
 			NFTDisplayResultText.innerHTML = "NFT Drawing in progress...";
 			
 			NFTDisplayImageText.style.color = RED;
-			NFTDisplayImageText = "";
+			NFTDisplayImageText.innerHTML = "";
 			
 			let inputString = NFTIDInput.value;
 			let id = Number(inputString);
@@ -802,14 +802,14 @@
 					}
 					catch(error) {
 						NFTImage.src = "";
-						NFTDisplayImageText = "Cannot display NFT."
+						NFTDisplayImageText.innerHTML = "Cannot display NFT."
 					}
 				}
 			}
 		}
 		catch(error) {
 			NFTImage.src = "";
-			NFTDisplayImageText = "";
+			NFTDisplayImageText.innerHTML = "";
 			NFTDisplayResultText.style.color = RED;
 			NFTDisplayResultText.innerHTML = getErrorString(error);
 		}
