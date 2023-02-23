@@ -30,6 +30,8 @@
 <p id="ID_ConnectAddressResultText" style='white-space: pre;'>Address Connected: ?</p>
 <table id="ID_ConnectAddressResultTable"></table>
 
+<button id="ID_ConnectMobileButton">Connect Mobile</button>
+
 <br/><br/><br/>
 
 <h2><u>Minting</u></h2>
@@ -205,6 +207,7 @@
 	const HeaderText = document.querySelector('#ID_HeaderText');
 	
 	const ConnectButton = document.querySelector('#ID_ConnectButton');
+	const ConnectMobileButton = document.querySelector('#ID_ConnectMobileButton');
 	const ConnectAddressResultText = document.querySelector('#ID_ConnectAddressResultText');
 	const ConnectAddressResultTable = document.querySelector('#ID_ConnectAddressResultTable');
 	
@@ -282,6 +285,7 @@
 	const MAX_MINTS = 100;
 	
 	let INPROGRESS_CONNECT = false;
+	let INPROGRESS_CONNECT_MOBILE = false;
 	let INPROGRESS_MINT = false;
 	let INPROGRESS_SAVE = false;
 	let INPROGRESS_DONATE = false;
@@ -364,8 +368,6 @@
 		try {
 			let arr = getInjectedProvider();
 			if(arr[0]) {
-				//ConnectAddressResultTable.innerHTML = "";
-			
 				ConnectAddressResultText.style.color = RED;
 				ConnectAddressResultText.innerHTML = arr[0];
 				return;
@@ -388,13 +390,50 @@
 			async_updateWallet();
 		}
 		catch(error) {
+			ConnectAddressResultText.style.color = RED;
+			ConnectAddressResultText.innerHTML = getErrorString(error);
+		}
+		
+		INPROGRESS_CONNECT = false;
+	}
+	
+	ConnectMobileButton.addEventListener('click', () => {
+		async_connectMobileWallet();
+	});
+	
+	async function async_connectMobileWallet() {
+		try {
+			let arr = getInjectedProvider();
+			if(arr[0]) {
+				ConnectAddressResultText.style.color = RED;
+				ConnectAddressResultText.innerHTML = arr[0];
+				return;
+			}
+			
+			let injectedProvider = arr[1];
+			
+			ConnectAddressResultText.style.color = YELLOW;
+			ConnectAddressResultText.innerHTML = "Connection in progress...";
+			
+			if(INPROGRESS_CONNECT_MOBILE) {
+				return;
+			}
+			
+			INPROGRESS_CONNECT_MOBILE = true;
+		
+			// Get permission from the user via the wallet application. This will always ask the user, even if they are already connected.
+			await eth_request(injectedProvider, "eth_requestAccounts", []);
+			
+			async_updateWallet();
+		}
+		catch(error) {
 			//ConnectAddressResultTable.innerHTML = "";
 		
 			ConnectAddressResultText.style.color = RED;
 			ConnectAddressResultText.innerHTML = getErrorString(error);
 		}
 		
-		INPROGRESS_CONNECT = false;
+		INPROGRESS_CONNECT_MOBILE = false;
 	}
 	
 	UpdateMintDataButton.addEventListener('click', () => {
