@@ -546,13 +546,13 @@
 				SaveConfigResultText.innerHTML = "NFT ID must be between 1 and 100.";
 			}
 			else {
-				//let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
+				let nftOwner = await contractReadCall(injectedProvider, "get_nftOwner", [id]);
 				
-				//if(nftOwner.toLowerCase() != address.toLowerCase()) {
-				//	SaveConfigResultText.style.color = RED;
-				//	SaveConfigResultText.innerHTML = "Connected address does not own this NFT.";
-				//}
-				//else {
+				if(nftOwner.toLowerCase() != address.toLowerCase()) {
+					SaveConfigResultText.style.color = RED;
+					SaveConfigResultText.innerHTML = "Connected address does not own this NFT.";
+				}
+				else {
 					let colorMode = getColorMode();
 					let duration = getDuration();
 					let imageSize = getImageSize();
@@ -561,7 +561,7 @@
 				
 					SaveConfigResultText.style.color = GREEN;
 					SaveConfigResultText.innerHTML = "Save Complete.\nSome NFT wallets/marketplaces require you to manually refresh the metadata before any changes are reflected.";
-				//}
+				}
 			}
 		}
 		catch(error) {
@@ -860,8 +860,7 @@
 					DonateResultText.innerHTML = "Connected address has insufficient balance to donate.\nBalance = " + ethers.utils.formatEther(addressBalance) + " " + parent.getChainCoinName();
 				}
 				else {
-					//await contractWriteCall(injectedProvider, "donate", [{value: donationValueETH}]);
-					await contractWriteCall(injectedProvider, "donate", []);
+					await contractWriteCall(injectedProvider, "donate", [{value: donationValueETH}]);
 				
 					DonateResultText.style.color = GREEN;
 					DonateResultText.innerHTML = "Donation complete.";
@@ -870,8 +869,7 @@
 		}
 		catch(error) {
 			DonateResultText.style.color = RED;
-			//DonateResultText.innerHTML = getErrorString(error);
-			DonateResultText.innerHTML = getErrorString(error) + "\n\n" + error.stack;
+			DonateResultText.innerHTML = getErrorString(error);
 		}
 		
 		INPROGRESS_DONATE = false;
@@ -897,7 +895,7 @@
 	
 	async function getAddressBalance(injectedProvider, address) {
 		// Returns balance in Wei. Make sure we convert hex to decimal before returning.
-		return String(parseInt(await injectedProvider.request({"method": "eth_getBalance", "params": [address]}), 16));
+		return String(parseInt(await injectedProvider.request({"method": "eth_getBalance", "params": [address, "latest"]}), 16));
 	}
 	
 	async function eth_request(injectedProvider, method, params) {
