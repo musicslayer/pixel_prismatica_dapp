@@ -184,6 +184,7 @@
 <button id="ID_NFTDisplayButton">View</button><br/>
 <p id="ID_NFTOwnerText" style='white-space: pre;'>Owner: ?</p>
 <img id="ID_NFTImage" src=""/>
+<p id="ID_NFTDisplayImageText" style='white-space: pre;'></p>
 <p id="ID_NFTDisplayResultText" style='white-space: pre;'></p>
 
 <br/><br/><br/>
@@ -265,6 +266,7 @@
 	const NFTDisplayButton = document.querySelector('#ID_NFTDisplayButton');
 	const NFTOwnerText = document.querySelector('#ID_NFTOwnerText');
 	const NFTImage = document.querySelector('#ID_NFTImage');
+	const NFTDisplayImageText = document.querySelector('#ID_NFTDisplayImageText');
 	const NFTDisplayResultText = document.querySelector('#ID_NFTDisplayResultText');
 	
 	const DonateInputText = document.querySelector('#ID_DonateInputText');
@@ -759,6 +761,9 @@
 			NFTDisplayResultText.style.color = YELLOW;
 			NFTDisplayResultText.innerHTML = "NFT Drawing in progress...";
 			
+			NFTDisplayImageText.style.color = RED;
+			NFTDisplayImageText = "";
+			
 			let inputString = NFTIDInput.value;
 			let id = Number(inputString);
 			
@@ -786,18 +791,25 @@
 				else {
 					let imageName = await contractReadCall(injectedProvider, "get_name", [id]);
 					let imageDescription = await contractReadCall(injectedProvider, "get_description", [id]);
-					//let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id, {gasLimit: "400000000000000000"}]);
-					let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
-					
-					NFTImage.src = imageURI;
 				
 					NFTDisplayResultText.style.color = GREEN;
 					NFTDisplayResultText.innerHTML = imageName + "\n" + imageDescription;
+					
+					// It's possible for the image to be too large to read.
+					try {
+						let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
+						NFTImage.src = imageURI;
+					}
+					catch(error) {
+						NFTImage.src = "";
+						NFTDisplayImageText = "Cannot display NFT."
+					}
 				}
 			}
 		}
 		catch(error) {
 			NFTImage.src = "";
+			NFTDisplayImageText = "";
 			NFTDisplayResultText.style.color = RED;
 			NFTDisplayResultText.innerHTML = getErrorString(error);
 		}
