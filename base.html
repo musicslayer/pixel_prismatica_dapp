@@ -26,11 +26,10 @@
 <img src="metamask.png" alt="MetaMask Logo" style="width:32px;height:32px;">
 <img src="trust_wallet.png" alt="Trust Wallet Logo" style="width:32px;height:32px;"><br/><br/>
 <button id="ID_ConnectButton" style="display:none">Connect</button>
+<button id="ID_ConnectWeb3Button" style="display:none">Connect</button>
 
 <p id="ID_ConnectAddressResultText" style='white-space: pre;'>Address Connected: ?</p>
 <table id="ID_ConnectAddressResultTable"></table>
-
-<button id="ID_ConnectMobileButton">Connect Mobile</button>
 
 <br/><br/><br/>
 
@@ -207,7 +206,7 @@
 	const HeaderText = document.querySelector('#ID_HeaderText');
 	
 	const ConnectButton = document.querySelector('#ID_ConnectButton');
-	const ConnectMobileButton = document.querySelector('#ID_ConnectMobileButton');
+	const ConnectWeb3Button = document.querySelector('#ID_ConnectWeb3Button');
 	const ConnectAddressResultText = document.querySelector('#ID_ConnectAddressResultText');
 	const ConnectAddressResultTable = document.querySelector('#ID_ConnectAddressResultTable');
 	
@@ -285,7 +284,7 @@
 	const MAX_MINTS = 100;
 	
 	let INPROGRESS_CONNECT = false;
-	let INPROGRESS_CONNECT_MOBILE = false;
+	let INPROGRESS_CONNECT_WEB3 = false;
 	let INPROGRESS_MINT = false;
 	let INPROGRESS_SAVE = false;
 	let INPROGRESS_DONATE = false;
@@ -312,8 +311,13 @@
 		if(arr[1]) {
 			let injectedProvider = arr[1];
 			
-			if(await needsConnectButton(injectedProvider)) {
+			if(await isWeb3Browser(injectedProvider)) {
+				ConnectButton.style.display = "none";
+				ConnectWeb3Button.style.display = "inline";
+			}
+			else {
 				ConnectButton.style.display = "inline";
+				ConnectWeb3Button.style.display = "none";
 			}
 		
 			injectedProvider.on('chainChanged', () => {
@@ -397,11 +401,11 @@
 		INPROGRESS_CONNECT = false;
 	}
 	
-	ConnectMobileButton.addEventListener('click', () => {
-		async_connectMobileWallet();
+	ConnectWeb3Button.addEventListener('click', () => {
+		async_connectWeb3Wallet();
 	});
 	
-	async function async_connectMobileWallet() {
+	async function async_connectWeb3Wallet() {
 		try {
 			let arr = getInjectedProvider();
 			if(arr[0]) {
@@ -415,11 +419,11 @@
 			ConnectAddressResultText.style.color = YELLOW;
 			ConnectAddressResultText.innerHTML = "Connection in progress...";
 			
-			if(INPROGRESS_CONNECT_MOBILE) {
+			if(INPROGRESS_CONNECT_WEB3) {
 				return;
 			}
 			
-			INPROGRESS_CONNECT_MOBILE = true;
+			INPROGRESS_CONNECT_WEB3 = true;
 		
 			// Get permission from the user via the wallet application. This will always ask the user, even if they are already connected.
 			await eth_request(injectedProvider, "eth_requestAccounts", []);
@@ -433,7 +437,7 @@
 			ConnectAddressResultText.innerHTML = getErrorString(error);
 		}
 		
-		INPROGRESS_CONNECT_MOBILE = false;
+		INPROGRESS_CONNECT_WEB3 = false;
 	}
 	
 	UpdateMintDataButton.addEventListener('click', () => {
@@ -909,17 +913,17 @@
 	}
 			
 	// Util Functions
-	async function needsConnectButton(injectedProvider) {
+	async function isWeb3Browser(injectedProvider) {
 		// For the MetaMask and Trust Wallet mobile apps, their dapp browsers control wallet connection, so we should not show a "connect" button (it won't work anyway).
 		// Such environments do not define "wallet_getPermissions", allowing us to differentiate them from other environments where a "connect" button is needed.
 		try {
 			await eth_request(injectedProvider, "wallet_getPermissions", [{"eth_accounts": {}}]);
 		}
 		catch(error) {
-			return false;
+			return true;
 		}
 		
-		return true;
+		return false;
 	}
 	
 	function isZeroAddress(address) {
