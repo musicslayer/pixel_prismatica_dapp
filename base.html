@@ -306,7 +306,7 @@
 		if(arr[1]) {
 			let injectedProvider = arr[1];
 			
-			if(!(await isMobileWallet(injectedProvider))) {
+			if(await needsConnectButton(injectedProvider)) {
 				ConnectButton.style.display = "inline";
 			}
 		
@@ -864,34 +864,18 @@
 	}
 			
 	// Util Functions
-	async function isMobileWallet(injectedProvider) {
-		// For MetaMask and Trust Wallet apps, their browsers control wallet connection and they do not provide the "wallet_requestPermissions" method
+	async function needsConnectButton(injectedProvider) {
+		// For the MetaMask and Trust Wallet mobile apps, their dapp browsers control wallet connection, so we should not show a "connect" button (it won't work anyway).
+		// Such environments do not define "wallet_getPermissions", allowing us to differentiate them from other environments where a "connect" button is needed.
 		try {
 			await eth_request(injectedProvider, "wallet_getPermissions", [{"eth_accounts": {}}]);
 		}
 		catch(error) {
-			return true;
+			return false;
 		}
 		
-		return false;
+		return true;
 	}
-	
-	/*
-	async function isMobileWallet(injectedProvider) {
-		// For MetaMask and Trust Wallet apps, their browsers control wallet connection and they do not provide the "wallet_requestPermissions" method
-		// We call something that we know will error, and use the error code to see if "wallet_requestPermissions" exists or not.
-		let _code = undefined;
-		
-		try {
-			await eth_request(injectedProvider, "wallet_requestPermissions", [{"eth_accounts": []}]);
-		}
-		catch(error) {
-			_code = error.code;
-		}
-		
-		return _code != -32602;
-	}
-	*/
 	
 	function isZeroAddress(address) {
 		return "0x0000000000000000000000000000000000000000" == address;
