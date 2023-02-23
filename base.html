@@ -784,26 +784,20 @@
 					NFTOwnerText.innerHTML = "Owner: " + nftOwner;
 				}
 				
-				if(nftOwner.toLowerCase() != address.toLowerCase()) {
-					NFTDisplayResultText.style.color = RED;
-					NFTDisplayResultText.innerHTML = "Connected address does not own this NFT.";
-				}
-				else {
-					let imageName = await contractReadCall(injectedProvider, "get_name", [id]);
-					let imageDescription = await contractReadCall(injectedProvider, "get_description", [id]);
+				let imageName = await contractReadCall(injectedProvider, "get_name", [id]);
+				let imageDescription = await contractReadCall(injectedProvider, "get_description", [id]);
+			
+				NFTDisplayResultText.style.color = GREEN;
+				NFTDisplayResultText.innerHTML = imageName + "\n" + imageDescription;
 				
-					NFTDisplayResultText.style.color = GREEN;
-					NFTDisplayResultText.innerHTML = imageName + "\n" + imageDescription;
-					
-					// It's possible for the image to be too large to read.
-					try {
-						let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
-						NFTImage.src = imageURI;
-					}
-					catch(error) {
-						NFTImage.src = "";
-						NFTDisplayImageText.innerHTML = "Cannot display NFT."
-					}
+				// It's possible for the image to be too large to read.
+				try {
+					let imageURI = await contractReadCall(injectedProvider, "get_imageURI", [id]);
+					NFTImage.src = imageURI;
+				}
+				catch(error) {
+					NFTImage.src = "";
+					NFTDisplayImageText.innerHTML = "Cannot display NFT."
 				}
 			}
 		}
