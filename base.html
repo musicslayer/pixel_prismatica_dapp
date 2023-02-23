@@ -869,9 +869,7 @@
 		}
 		catch(error) {
 			DonateResultText.style.color = RED;
-			//DonateResultText.innerHTML = getErrorString(error);
-			//DonateResultText.innerHTML = "Code: " + error.code + "\n\n" + getErrorString(error);
-			DonateResultText.innerHTML = JSON.stringify(error, Object.getOwnPropertyNames(error), 4)
+			DonateResultText.innerHTML = getErrorString(error);
 		}
 		
 		INPROGRESS_DONATE = false;
@@ -1035,8 +1033,8 @@
 				return errString;
 			}
 			else if(error && error.code == "ACTION_REJECTED") {
-				// Transaction canceled.
-				return "The transaction was canceled.";
+				// Transaction cancelled.
+				return "The transaction was cancelled.";
 			}
 			else if(error && error.code == "UNPREDICTABLE_GAS_LIMIT") {
 				// Cannot estimate gas.
@@ -1051,8 +1049,8 @@
 				return "The operation was not supported. Make sure your wallet is connected to the dapp.";
 			}
 			else if(error && error.code == 4001) {
-				// Connection canceled.
-				return "The connection was canceled.";
+				// Connection cancelled.
+				return "The connection was cancelled.";
 			}
 			else if(error && error.code == -32002) {
 				return error.message;
@@ -1060,6 +1058,10 @@
 			else if(error && error.code == -32603) {
 				// Internal JSON-RPC error. Examples: Insufficient funds for the transaction. Exceed maximum block range: 5000.
 				return error.message + "\n" + error.data.message;
+			}
+			else if(error && error.message == "cancelled") {
+				// Transaction cancelled.
+				return "The transaction was cancelled.";
 			}
 			else {
 				// Just give up.
