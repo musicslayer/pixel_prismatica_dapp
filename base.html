@@ -869,7 +869,8 @@
 		}
 		catch(error) {
 			DonateResultText.style.color = RED;
-			DonateResultText.innerHTML = getErrorString(error);
+			//DonateResultText.innerHTML = getErrorString(error);
+			DonateResultText.innerHTML = getErrorString(error) + "\n\n" + error.stack;
 		}
 		
 		INPROGRESS_DONATE = false;
