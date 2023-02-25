@@ -1,0 +1,594 @@
+<?xml version="1.1"?>
+<svg width="196" height="196" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<rect id="box" width="14" height="14"/>
+</defs>
+<use href="#box" x="0" y="0">
+<animate attributeName="fill" values="#C03A00;#F22D00;#266000;#FE6500;#64E400;#C03A00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="0">
+<animate attributeName="fill" values="#8F7600;#422700;#9D9E00;#05E200;#C50A00;#8F7600" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="0">
+<animate attributeName="fill" values="#79C400;#8D1B00;#707C00;#CA2600;#D9FB00;#79C400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="0">
+<animate attributeName="fill" values="#8E0C00;#AE7700;#DA7400;#F8AC00;#6FFD00;#8E0C00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="0">
+<animate attributeName="fill" values="#6B9000;#D55400;#EBEE00;#CD8F00;#998A00;#6B9000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="0">
+<animate attributeName="fill" values="#801F00;#619200;#995900;#9B1500;#686500;#801F00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="0">
+<animate attributeName="fill" values="#BCB000;#0A0000;#2E3500;#6B9300;#4C6600;#BCB000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="0">
+<animate attributeName="fill" values="#F0BC00;#902600;#A56D00;#B7FC00;#CF4400;#F0BC00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="0">
+<animate attributeName="fill" values="#1A1100;#147900;#9E4600;#99B100;#CA9100;#1A1100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="0">
+<animate attributeName="fill" values="#266800;#27ED00;#D29800;#B1BB00;#104500;#266800" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="0">
+<animate attributeName="fill" values="#1C1400;#DEFC00;#0C2D00;#9D1100;#047A00;#1C1400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="0">
+<animate attributeName="fill" values="#68AD00;#E82F00;#978500;#AB5200;#98A700;#68AD00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="0">
+<animate attributeName="fill" values="#10DD00;#E35600;#B09000;#C0B500;#2B9800;#10DD00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="0">
+<animate attributeName="fill" values="#583300;#0BAB00;#642700;#2ED300;#E51B00;#583300" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="14">
+<animate attributeName="fill" values="#820400;#119100;#0BB300;#19DE00;#E12900;#820400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="14">
+<animate attributeName="fill" values="#7F9800;#AD6A00;#D94300;#01D700;#850A00;#7F9800" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="14">
+<animate attributeName="fill" values="#069C00;#D9FA00;#9BED00;#763100;#AD2100;#069C00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="14">
+<animate attributeName="fill" values="#9A6C00;#B21300;#A9C100;#9AE600;#3C8700;#9A6C00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="14">
+<animate attributeName="fill" values="#025200;#83AE00;#B2EB00;#A52C00;#75C200;#025200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="14">
+<animate attributeName="fill" values="#CE5B00;#B37200;#861700;#451C00;#247F00;#CE5B00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="14">
+<animate attributeName="fill" values="#E6EB00;#718000;#95CD00;#CE9A00;#178A00;#E6EB00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="14">
+<animate attributeName="fill" values="#ECFB00;#3D9200;#8A9900;#B73200;#42C800;#ECFB00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="14">
+<animate attributeName="fill" values="#2FEA00;#E89D00;#C8FD00;#192D00;#EFA100;#2FEA00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="14">
+<animate attributeName="fill" values="#A54400;#B0F800;#837F00;#ACCE00;#332500;#A54400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="14">
+<animate attributeName="fill" values="#E94C00;#4F8800;#A3ED00;#C12A00;#60C500;#E94C00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="14">
+<animate attributeName="fill" values="#D06500;#3C0600;#F04300;#3A6E00;#181E00;#D06500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="14">
+<animate attributeName="fill" values="#340A00;#1FCD00;#C9A700;#0D4F00;#657600;#340A00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="14">
+<animate attributeName="fill" values="#BACC00;#5D2400;#94BC00;#E34300;#B20600;#BACC00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="28">
+<animate attributeName="fill" values="#B68A00;#87E500;#A81200;#05EB00;#86B000;#B68A00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="28">
+<animate attributeName="fill" values="#FCA100;#0BBF00;#D93000;#975300;#93AB00;#FCA100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="28">
+<animate attributeName="fill" values="#8C1500;#702800;#57CF00;#C6E700;#9A2200;#8C1500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="28">
+<animate attributeName="fill" values="#E8C800;#CCC400;#C55400;#40A100;#835E00;#E8C800" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="28">
+<animate attributeName="fill" values="#408900;#180200;#E49700;#D18F00;#2D2B00;#408900" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="28">
+<animate attributeName="fill" values="#C8EB00;#440D00;#4A9800;#C00F00;#720700;#C8EB00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="28">
+<animate attributeName="fill" values="#281200;#E4E800;#C7DB00;#79EB00;#5FF500;#281200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="28">
+<animate attributeName="fill" values="#19D100;#9BB400;#3F2300;#948C00;#0A2600;#19D100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="28">
+<animate attributeName="fill" values="#2E3C00;#198100;#53D900;#42A900;#87E600;#2E3C00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="28">
+<animate attributeName="fill" values="#EA4400;#815C00;#D75100;#931700;#A5F400;#EA4400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="28">
+<animate attributeName="fill" values="#918D00;#A36C00;#D2A000;#F5B900;#47C200;#918D00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="28">
+<animate attributeName="fill" values="#642F00;#A76800;#C65100;#E8BD00;#208700;#642F00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="28">
+<animate attributeName="fill" values="#D2B600;#FB6200;#D74300;#6AEE00;#7B6A00;#D2B600" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="28">
+<animate attributeName="fill" values="#DA0100;#5CF400;#419900;#6A4000;#04AC00;#DA0100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="42">
+<animate attributeName="fill" values="#8DC500;#8D0400;#D22700;#AB4600;#A2DA00;#8DC500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="42">
+<animate attributeName="fill" values="#7A1F00;#A5AC00;#2D7000;#A07100;#2FD300;#7A1F00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="42">
+<animate attributeName="fill" values="#10DC00;#6A9D00;#A35300;#053E00;#3B3B00;#10DC00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="42">
+<animate attributeName="fill" values="#80C600;#F84B00;#DCF000;#2AA500;#D3FE00;#80C600" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="42">
+<animate attributeName="fill" values="#6D3900;#7CB700;#348300;#7D0F00;#D53000;#6D3900" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="42">
+<animate attributeName="fill" values="#21DB00;#9D3D00;#AFAB00;#1AF900;#308C00;#21DB00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="42">
+<animate attributeName="fill" values="#E50100;#6E1300;#E89300;#A1D800;#2EAA00;#E50100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="42">
+<animate attributeName="fill" values="#DA5B00;#507600;#167500;#33C500;#B55000;#DA5B00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="42">
+<animate attributeName="fill" values="#BFD700;#717400;#8E8D00;#A48400;#153800;#BFD700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="42">
+<animate attributeName="fill" values="#D1DD00;#441000;#D5F300;#0E4400;#A82900;#D1DD00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="42">
+<animate attributeName="fill" values="#D9E900;#F28900;#347200;#065400;#136300;#D9E900" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="42">
+<animate attributeName="fill" values="#7B8D00;#BDEB00;#213300;#30DC00;#DAC800;#7B8D00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="42">
+<animate attributeName="fill" values="#B5F600;#69FF00;#005D00;#C5F500;#8CD000;#B5F600" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="42">
+<animate attributeName="fill" values="#251F00;#726A00;#6BA100;#391000;#A94A00;#251F00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="56">
+<animate attributeName="fill" values="#3FEB00;#6E7300;#CEF100;#406E00;#045800;#3FEB00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="56">
+<animate attributeName="fill" values="#0E1200;#19E100;#B01500;#208E00;#ED9600;#0E1200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="56">
+<animate attributeName="fill" values="#19E200;#DA1100;#7DD700;#2A4000;#C01500;#19E200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="56">
+<animate attributeName="fill" values="#392700;#7AB300;#348500;#925C00;#4EC700;#392700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="56">
+<animate attributeName="fill" values="#C93100;#747C00;#E63800;#738800;#AAC400;#C93100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="56">
+<animate attributeName="fill" values="#681D00;#848E00;#66E200;#7C3800;#F39000;#681D00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="56">
+<animate attributeName="fill" values="#984100;#D8FF00;#B8EB00;#B47000;#E17E00;#984100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="56">
+<animate attributeName="fill" values="#B1E900;#53B000;#093800;#75A700;#4A2F00;#B1E900" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="56">
+<animate attributeName="fill" values="#82AD00;#5A2F00;#908000;#02D400;#C39C00;#82AD00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="56">
+<animate attributeName="fill" values="#E93E00;#D40700;#7A4300;#3B1000;#A0EF00;#E93E00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="56">
+<animate attributeName="fill" values="#A01800;#F63400;#889B00;#5C7000;#452300;#A01800" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="56">
+<animate attributeName="fill" values="#397F00;#EAE300;#3C4200;#D53E00;#AFD300;#397F00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="56">
+<animate attributeName="fill" values="#5CA700;#CA5C00;#5E8A00;#03C700;#FD0C00;#5CA700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="56">
+<animate attributeName="fill" values="#C59700;#6F4900;#3FA400;#22B600;#A86500;#C59700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="70">
+<animate attributeName="fill" values="#C01500;#6F0A00;#3A5600;#AE4500;#B62200;#C01500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="70">
+<animate attributeName="fill" values="#80F200;#D89C00;#520800;#D34F00;#EA8600;#80F200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="70">
+<animate attributeName="fill" values="#728900;#4F2600;#B25100;#296300;#F64700;#728900" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="70">
+<animate attributeName="fill" values="#2CBA00;#F47F00;#AEF900;#C07400;#6B8000;#2CBA00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="70">
+<animate attributeName="fill" values="#539800;#72DA00;#958300;#0B8600;#02A900;#539800" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="70">
+<animate attributeName="fill" values="#61F300;#ABCD00;#71EB00;#164000;#DF3600;#61F300" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="70">
+<animate attributeName="fill" values="#1C4200;#425E00;#11DE00;#467500;#AC1500;#1C4200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="70">
+<animate attributeName="fill" values="#DE6F00;#587900;#D45800;#A93500;#559200;#DE6F00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="70">
+<animate attributeName="fill" values="#340500;#099A00;#400100;#C1E000;#AC9200;#340500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="70">
+<animate attributeName="fill" values="#A94600;#2C2900;#574D00;#306200;#4B6200;#A94600" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="70">
+<animate attributeName="fill" values="#3B4F00;#F3D000;#91D600;#181000;#E87700;#3B4F00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="70">
+<animate attributeName="fill" values="#64B200;#01D100;#919600;#CE2700;#A01D00;#64B200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="70">
+<animate attributeName="fill" values="#CFFD00;#890C00;#5C5F00;#B26F00;#BD4000;#CFFD00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="70">
+<animate attributeName="fill" values="#F68700;#26C200;#D6A800;#C14000;#735500;#F68700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="84">
+<animate attributeName="fill" values="#CA7A00;#346C00;#298E00;#5B9200;#361100;#CA7A00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="84">
+<animate attributeName="fill" values="#4E5500;#9BC700;#0ECC00;#322600;#6ABD00;#4E5500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="84">
+<animate attributeName="fill" values="#DA1600;#B8BB00;#22C700;#A85C00;#6FF000;#DA1600" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="84">
+<animate attributeName="fill" values="#8FD900;#361F00;#575F00;#E7FE00;#746200;#8FD900" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="84">
+<animate attributeName="fill" values="#233900;#F57600;#433800;#340500;#687100;#233900" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="84">
+<animate attributeName="fill" values="#6AC800;#F45B00;#EE3000;#E6B100;#4AAD00;#6AC800" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="84">
+<animate attributeName="fill" values="#483300;#ADDC00;#D19600;#F4DA00;#C4B000;#483300" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="84">
+<animate attributeName="fill" values="#2B2000;#53D500;#B64300;#F43C00;#BD0400;#2B2000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="84">
+<animate attributeName="fill" values="#945000;#BFB900;#BE7C00;#BCC000;#EAB700;#945000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="84">
+<animate attributeName="fill" values="#4AF300;#A81600;#7F1D00;#245700;#A80700;#4AF300" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="84">
+<animate attributeName="fill" values="#4D4A00;#907000;#3EAE00;#D02900;#8F2700;#4D4A00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="84">
+<animate attributeName="fill" values="#5F9100;#DDF200;#568B00;#1D2600;#A79A00;#5F9100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="84">
+<animate attributeName="fill" values="#11C200;#C24B00;#B72E00;#A5A700;#E2A300;#11C200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="84">
+<animate attributeName="fill" values="#802C00;#51DD00;#446F00;#CEDA00;#025500;#802C00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="98">
+<animate attributeName="fill" values="#568000;#ABFC00;#16E900;#47AC00;#50FD00;#568000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="98">
+<animate attributeName="fill" values="#27FE00;#942700;#0ADB00;#4A2600;#1DD300;#27FE00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="98">
+<animate attributeName="fill" values="#51BF00;#77D400;#212E00;#2A2300;#B52500;#51BF00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="98">
+<animate attributeName="fill" values="#408200;#76BD00;#ABA300;#8B1E00;#C87F00;#408200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="98">
+<animate attributeName="fill" values="#937500;#293B00;#F5D500;#B22300;#EAA700;#937500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="98">
+<animate attributeName="fill" values="#873700;#C47800;#CFC700;#599200;#111F00;#873700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="98">
+<animate attributeName="fill" values="#2A7F00;#20ED00;#58F800;#0A3C00;#F88400;#2A7F00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="98">
+<animate attributeName="fill" values="#E77100;#780000;#D17100;#49AA00;#75EB00;#E77100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="98">
+<animate attributeName="fill" values="#BEFC00;#D80000;#34E400;#68BB00;#F20900;#BEFC00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="98">
+<animate attributeName="fill" values="#EE2600;#2A7C00;#862900;#8E2200;#F8F500;#EE2600" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="98">
+<animate attributeName="fill" values="#F7F400;#EAA200;#D2A500;#438500;#5F9500;#F7F400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="98">
+<animate attributeName="fill" values="#080700;#884400;#03E900;#C70700;#C4D400;#080700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="98">
+<animate attributeName="fill" values="#FC5000;#A14600;#068200;#F44B00;#C12500;#FC5000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="98">
+<animate attributeName="fill" values="#A18E00;#A9B700;#CBD600;#03EE00;#0CA000;#A18E00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="112">
+<animate attributeName="fill" values="#534000;#7DFB00;#2DD000;#C5C500;#2FA800;#534000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="112">
+<animate attributeName="fill" values="#8FB700;#EAB400;#E3AC00;#51FB00;#805C00;#8FB700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="112">
+<animate attributeName="fill" values="#4A1C00;#7DB100;#E9B800;#416C00;#1D0D00;#4A1C00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="112">
+<animate attributeName="fill" values="#6EDD00;#418F00;#EB1700;#7A8700;#5F5600;#6EDD00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="112">
+<animate attributeName="fill" values="#256400;#414F00;#63CC00;#910A00;#9BE700;#256400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="112">
+<animate attributeName="fill" values="#51AA00;#6E8D00;#52FF00;#CC2300;#CE9800;#51AA00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="112">
+<animate attributeName="fill" values="#48F300;#CD4D00;#5B0000;#608800;#64BD00;#48F300" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="112">
+<animate attributeName="fill" values="#C9DB00;#95BC00;#F97C00;#B24400;#6C5C00;#C9DB00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="112">
+<animate attributeName="fill" values="#20D400;#C86D00;#1E3100;#EA0600;#4F8D00;#20D400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="112">
+<animate attributeName="fill" values="#BE2800;#B67500;#E40C00;#5F3900;#6C1800;#BE2800" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="112">
+<animate attributeName="fill" values="#C30A00;#D6DD00;#845300;#929C00;#B9F000;#C30A00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="112">
+<animate attributeName="fill" values="#436D00;#2CF800;#324D00;#0A9B00;#0E3D00;#436D00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="112">
+<animate attributeName="fill" values="#41FD00;#0B1100;#FCD100;#BC7100;#7DCB00;#41FD00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="112">
+<animate attributeName="fill" values="#FDDF00;#274A00;#A06E00;#E53100;#7BF200;#FDDF00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="126">
+<animate attributeName="fill" values="#9DF700;#C94E00;#04BB00;#9DC300;#242000;#9DF700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="126">
+<animate attributeName="fill" values="#9DD100;#DF5F00;#394D00;#E87100;#7D9600;#9DD100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="126">
+<animate attributeName="fill" values="#2FB000;#EFC600;#77CA00;#8AAF00;#0BA600;#2FB000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="126">
+<animate attributeName="fill" values="#6BBD00;#5F4F00;#FD9400;#7BEB00;#8B1E00;#6BBD00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="126">
+<animate attributeName="fill" values="#F6A300;#0A5A00;#56CC00;#0CB900;#3AF200;#F6A300" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="126">
+<animate attributeName="fill" values="#233D00;#599100;#FECA00;#554C00;#490500;#233D00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="126">
+<animate attributeName="fill" values="#627200;#2F4300;#099800;#B5B300;#F94600;#627200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="126">
+<animate attributeName="fill" values="#9F2500;#B13800;#2E3400;#508000;#B0BB00;#9F2500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="126">
+<animate attributeName="fill" values="#B5B400;#390600;#1BB900;#600000;#79DC00;#B5B400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="126">
+<animate attributeName="fill" values="#776E00;#B11500;#7A0500;#DD1200;#B02C00;#776E00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="126">
+<animate attributeName="fill" values="#995500;#2D3B00;#ABD900;#631400;#57F600;#995500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="126">
+<animate attributeName="fill" values="#36E400;#55F500;#18DA00;#04D000;#97F700;#36E400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="126">
+<animate attributeName="fill" values="#263800;#11C000;#76A400;#B9BE00;#1C3600;#263800" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="126">
+<animate attributeName="fill" values="#6BE800;#D29400;#8AEE00;#FF7A00;#015B00;#6BE800" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="140">
+<animate attributeName="fill" values="#D2EE00;#30FC00;#363F00;#F19400;#F3A600;#D2EE00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="140">
+<animate attributeName="fill" values="#D39200;#B5C400;#611D00;#76A700;#8AE300;#D39200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="140">
+<animate attributeName="fill" values="#764E00;#0A2900;#FA8300;#FAB800;#16CA00;#764E00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="140">
+<animate attributeName="fill" values="#30D000;#F00200;#A12100;#767D00;#78BA00;#30D000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="140">
+<animate attributeName="fill" values="#19E600;#6FF600;#0F7900;#11C100;#067E00;#19E600" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="140">
+<animate attributeName="fill" values="#B84100;#B19500;#8F7500;#BEFE00;#635500;#B84100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="140">
+<animate attributeName="fill" values="#30F400;#04F900;#724900;#125300;#97A200;#30F400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="140">
+<animate attributeName="fill" values="#6CCB00;#97CF00;#AFB700;#C7F800;#E25F00;#6CCB00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="140">
+<animate attributeName="fill" values="#023700;#B64700;#FA0300;#AA8B00;#D46A00;#023700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="140">
+<animate attributeName="fill" values="#818100;#078C00;#34B300;#027400;#34C200;#818100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="140">
+<animate attributeName="fill" values="#AEAB00;#3A1E00;#CC5200;#16B900;#978400;#AEAB00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="140">
+<animate attributeName="fill" values="#C57E00;#DD1200;#BF9C00;#E8B600;#A0EA00;#C57E00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="140">
+<animate attributeName="fill" values="#303500;#69C100;#55E500;#9AFF00;#EEE400;#303500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="140">
+<animate attributeName="fill" values="#6E4E00;#895800;#EE8D00;#322E00;#BC0D00;#6E4E00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="154">
+<animate attributeName="fill" values="#4BB500;#279700;#C93500;#93DE00;#CEA500;#4BB500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="154">
+<animate attributeName="fill" values="#5BD400;#35C100;#596000;#D0B800;#F7D700;#5BD400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="154">
+<animate attributeName="fill" values="#D9AF00;#C2D700;#7A0B00;#157400;#458C00;#D9AF00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="154">
+<animate attributeName="fill" values="#8F4200;#6F1600;#1B1D00;#5EED00;#4C9600;#8F4200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="154">
+<animate attributeName="fill" values="#07E700;#2E5B00;#AC4800;#E32A00;#F70500;#07E700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="154">
+<animate attributeName="fill" values="#9DE400;#C2FF00;#3EB600;#08EB00;#75B300;#9DE400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="154">
+<animate attributeName="fill" values="#3F9A00;#438900;#C4A300;#E87800;#F63A00;#3F9A00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="154">
+<animate attributeName="fill" values="#4B5C00;#936B00;#1E1000;#993B00;#F85700;#4B5C00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="154">
+<animate attributeName="fill" values="#79F600;#CEA600;#9A4C00;#B51C00;#042200;#79F600" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="154">
+<animate attributeName="fill" values="#E3B100;#2D8100;#C2A800;#25A400;#E17D00;#E3B100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="154">
+<animate attributeName="fill" values="#6CE500;#7ABA00;#33AF00;#1A3100;#ECFE00;#6CE500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="154">
+<animate attributeName="fill" values="#AD5F00;#14B200;#237E00;#7BCA00;#B65300;#AD5F00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="154">
+<animate attributeName="fill" values="#581E00;#6CF500;#30CD00;#AED900;#4AC400;#581E00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="154">
+<animate attributeName="fill" values="#4E9100;#DC3C00;#2D2800;#545600;#88E000;#4E9100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="168">
+<animate attributeName="fill" values="#22C200;#BFB200;#BC4600;#69A300;#03C900;#22C200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="168">
+<animate attributeName="fill" values="#698900;#0D1300;#E6EF00;#E48F00;#F1BB00;#698900" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="168">
+<animate attributeName="fill" values="#171700;#FDEC00;#C5BD00;#0ECF00;#228600;#171700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="168">
+<animate attributeName="fill" values="#4CB300;#EED400;#E25900;#294E00;#296900;#4CB300" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="168">
+<animate attributeName="fill" values="#BD5100;#925100;#EF4200;#B17F00;#CB6B00;#BD5100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="168">
+<animate attributeName="fill" values="#6D9500;#AB2D00;#EED200;#53E100;#06D800;#6D9500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="168">
+<animate attributeName="fill" values="#19FD00;#DD8200;#5CE100;#29AD00;#02CA00;#19FD00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="168">
+<animate attributeName="fill" values="#ABDE00;#755900;#9F0500;#CCF000;#F91000;#ABDE00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="168">
+<animate attributeName="fill" values="#18A000;#2ED300;#7C6400;#4D4000;#C30800;#18A000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="168">
+<animate attributeName="fill" values="#8AF500;#BE7E00;#85AC00;#A77B00;#C8FF00;#8AF500" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="168">
+<animate attributeName="fill" values="#335C00;#7A6500;#418700;#757C00;#A7E500;#335C00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="168">
+<animate attributeName="fill" values="#45CA00;#036C00;#753900;#C1DC00;#F08E00;#45CA00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="168">
+<animate attributeName="fill" values="#B92100;#BC1D00;#BD9000;#CB4C00;#FF4A00;#B92100" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="168">
+<animate attributeName="fill" values="#D55200;#771B00;#4D3300;#06C000;#A77300;#D55200" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="0" y="182">
+<animate attributeName="fill" values="#F61900;#0BDF00;#90C000;#653700;#3A2100;#F61900" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="14" y="182">
+<animate attributeName="fill" values="#7B9900;#0CC300;#13E500;#5E2B00;#077100;#7B9900" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="28" y="182">
+<animate attributeName="fill" values="#7E7F00;#5E3200;#EDB200;#251D00;#547200;#7E7F00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="42" y="182">
+<animate attributeName="fill" values="#C75400;#414300;#8BA400;#70D000;#A0F100;#C75400" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="56" y="182">
+<animate attributeName="fill" values="#210800;#7D8700;#D7BF00;#FA5000;#8ED300;#210800" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="70" y="182">
+<animate attributeName="fill" values="#3BDA00;#9B6F00;#0CA400;#F53800;#F02800;#3BDA00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="84" y="182">
+<animate attributeName="fill" values="#590C00;#559B00;#F20E00;#BFAD00;#AB7E00;#590C00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="98" y="182">
+<animate attributeName="fill" values="#DED600;#79C400;#BCE900;#5D7200;#992D00;#DED600" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="112" y="182">
+<animate attributeName="fill" values="#486000;#D55D00;#FD7D00;#A56C00;#4BF400;#486000" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="126" y="182">
+<animate attributeName="fill" values="#831D00;#62FD00;#758B00;#8A1600;#7E4200;#831D00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="140" y="182">
+<animate attributeName="fill" values="#68AF00;#CA5700;#5EAF00;#7D9700;#6B4200;#68AF00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="154" y="182">
+<animate attributeName="fill" values="#4F0E00;#6CBE00;#EC5400;#A79B00;#C98B00;#4F0E00" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="168" y="182">
+<animate attributeName="fill" values="#4DB700;#19C100;#60BD00;#D74300;#CDF800;#4DB700" dur="10s" repeatCount="indefinite"/>
+</use>
+<use href="#box" x="182" y="182">
+<animate attributeName="fill" values="#14CD00;#97DE00;#F4FD00;#A1F200;#737D00;#14CD00" dur="10s" repeatCount="indefinite"/>
+</use>
+</svg>
